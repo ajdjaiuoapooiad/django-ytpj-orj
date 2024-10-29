@@ -1,0 +1,304 @@
+/* Video Upload Page */
+.upload-content{
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .right-video img{
+    width: 150px;
+  }
+  
+  .left-video{
+    padding: 10px;
+  }
+  
+  .left-video h4{
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  /* Title */
+  
+  .left-video .input-div{
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    padding: 15px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .input-div input{
+    border: none;
+    font-weight: bold;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    font-size: 17px;
+    font-family: poppins;
+  }
+  .input-div span{
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.616);
+  }
+  
+  
+  /* Description */
+  
+  .left-video .desc-div{
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    padding: 15px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .desc-div textarea{
+    border: none;
+    padding: 10px;
+    font-size: 17px;
+    outline: none;
+    width: 700px;
+    height: 300px;
+   
+  }
+  .input-div span{
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.616);
+  }
+  
+  
+  /* Thumbnail */
+  
+  .left-video .thumb-div{
+    /* border: 1px solid rgba(0, 0, 0, 0.411); */
+    padding: 15px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .thumb-div input{
+    border: none;
+    outline: none;
+    padding: 10px;
+   
+  }
+  .thumb-div span{
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.808);
+  }
+  
+  /* Tags */
+  
+  .left-video .tags-div{
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    padding: 15px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .tags-div input{
+    border: none;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    font-weight: bold;
+    font-family: poppins;
+  }
+  .tags-div p{
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.452);
+    font-size: 12px;
+  }
+  
+  
+  
+  /* Thumbnail */
+  
+  .left-video .video-div{
+    /* border: 1px solid rgba(0, 0, 0, 0.411); */
+    padding: 15px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .video-div input{
+    border: none;
+    padding: 10px;
+   
+  }
+  .video-div span{
+    margin-top: 0px;
+    color: rgba(218, 218, 218, 0.808);
+  }
+  
+  
+  /* Right Section */
+  .right-video{
+    padding: 20px;
+    margin-right: 50px;
+  }
+  .r-thumb{
+    width: 300px;
+    border-radius: 10px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: rgba(214, 214, 214, 0.274);
+  }
+  .r-thumb .uploading-video{
+    width: 100%;
+    height: 49%;
+    text-align: center;
+    
+    background-color: rgba(182, 182, 182, 0.308);
+  }
+  
+  .uploading-video h5{
+    padding-top: 50px;
+    color: rgb(80, 80, 80);
+  }
+  .video-details{
+    padding: 0;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .video-details h5{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  .video-details a{
+    font-size: 13px;
+  }
+  
+  .video-details h4{
+    margin-bottom: 0;
+    margin-top: 25px;
+    font-weight: normal;
+  }
+  
+  .video-details span{
+    font-size: 13px;
+  }
+  
+  .error-div{
+    color: red;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  
+  .upload-btn-div{
+    width: 700px;
+    margin-top: 10px;
+  }
+  .upload-btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-size: 15px;
+    font-family: poppins;
+    transition: 0.5s;
+  }
+  .upload-btn:hover{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid black;
+    transform: translateX(5px);
+    background-color: rgb(32, 32, 32);
+    color: #fff;
+    font-size: 15px;
+    font-family: poppins;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .upload-content{
+      flex-direction: column;
+    }
+    
+    .r-thumb{
+      width: auto;
+      border-radius: 10px;
+      height: 370px;
+      border-radius: 10px;
+      background-color: rgba(214, 214, 214, 0.274);
+    }
+    .r-thumb .uploading-video{
+      width: 100%;
+      height: 49%;
+      text-align: center;
+      
+      background-color: rgba(182, 182, 182, 0.308);
+    }
+  
+    .desc-div textarea{
+  
+      width: 450px;
+     
+    }
+  
+  }
+  
+  
+  
+  
+  .file-input {
+    display: inline-block;
+    text-align: left;
+    /* background: rgb(170, 108, 108); */
+    padding: 16px;
+    width: 450px;
+    position: relative;
+    align-items: center;
+    border-radius: 3px;
+    border: dashed black 2px;
+  
+  }
+  
+  .file-input > [type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .file-input > .button {
+    display: inline-block;
+    cursor: pointer;
+    background: rgb(224, 224, 224);
+    padding: 0px 2px;
+    padding-top: 10px;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
+
+  
+  .file-input > .label {
+    color: #333;
+    white-space: nowrap;
+    opacity: .3;
+  }
+  
+  .file-input.-chosen > .label {
+    opacity: 1;
+  }
+  
+  
+  .sub_button_channel{
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+  }

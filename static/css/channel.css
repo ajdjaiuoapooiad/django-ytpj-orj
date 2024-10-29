@@ -1,0 +1,222 @@
+/* #########   Youtube Channel Page    ######## */
+.channel-art img{
+    width: 1100px;
+    height: 200px;
+  }
+  
+  .channel-art{
+    width: 1100px;
+    height: 200px;
+  }
+  
+  .flex{
+    display: flex;
+  }
+  
+  .channel-header{
+    margin: 20px 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .channel-img-title{
+    align-items: center;
+  }
+  
+  
+  .channel-img-title .img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+  
+  .channel-img-title{
+    align-items: center;
+  }
+  
+  .channel-img-title .channel-image-texts{
+    margin-left: 20px;
+  }
+  
+  .channel-image-texts h4{
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .channel-header-btns{
+  display: flex;
+  }
+  
+  .channel-header-btns a{
+    display: flex;
+    margin: 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+    }
+  
+  .channel-header-btns .channel-join{
+    border: 2px solid rgb(0, 162, 255);
+    color: rgb(0, 162, 255);
+    border-radius:4px;
+    transition: 0.5s;
+  }
+  
+  .channel-header-btns .channel-join:hover{
+    background-color:rgb(0, 162, 255);
+    color: rgb(255, 255, 255);
+    border-radius:4px;
+  }
+  
+  .channel-header-btns .channel-subscribe{
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius:4px;
+  }
+  
+  .channel-header-links{
+    justify-content: space-evenly;
+  }
+  
+  .channel-header-links a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: poppins;
+    color: rgb(43, 43, 43);
+    font-weight: 500;
+  }
+  
+  .channel-intro-video {
+    margin-top: 20px;
+    padding: 30px;
+    display: flex;
+    background-color: rgb(240, 240, 240);
+  }
+  
+  .channel-intro-video video{
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .intro-contents{
+    margin-left: 40px;
+    /* margin-top: 20px; */
+  }
+  
+  .intro-contents h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .intro-contents p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .intro-contents small{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(63, 63, 63);
+  }
+  
+  .popular-video{
+    align-items: center;
+  
+  }
+  
+  .popular-video h3{
+    margin-left: 40px;  
+  }
+  
+  .popular-video .play-all{
+    margin-left: 40px;  
+    align-items: center;
+  }
+  .play-all a{
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+  }
+  
+  @media screen and (max-width:425px){
+    .channel-art img{
+      width: 360px;
+      height: 170px;
+      object-fit: cover;
+    }
+    
+    .channel-art{
+      width: 360px;
+      height: 170px;
+    }
+    
+    
+    .channel-header{
+      margin: 20px 5px;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .channel-img-title .img{
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50px;
+    }
+    
+    .channel-image-texts span{
+      font-size: 12px;
+      font-weight: 500;
+    }
+  
+    
+    .channel-header-btns a{
+      display: flex;
+      margin: 2px;
+      text-decoration: none;
+      padding: 10px 20px;
+      }
+    
+    .channel-header-btns .channel-subscribe{
+      background-color: rgb(255, 0, 0);
+      color: white;
+      border-radius:4px;
+      padding: 12px 20px;
+    }
+     
+    .channel-intro-video {
+      margin-top: 20px;
+      padding: 3px;
+      flex-direction: column;
+      background-color: rgb(240, 240, 240);
+    }
+    
+    .channel-intro-video video{
+      width: 350px;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .intro-contents{
+      margin-left: 10px;
+    }
+  
+    
+    .channel-header-links .dont-display-this{
+      display: none;
+    }
+    
+  }
+  
+  
+.sub_button_channel{
+  background-color: red;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 13px 20px;
+}
+  
+  

@@ -1,1 +1,28 @@
-<h1>Index</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %} 
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+
+<style>
+    a{
+        color: black;
+    }
+    .message-alert{
+        background-color: rgb(169, 255, 166);
+        padding: 14px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        border: 1px solid rgb(13, 161, 0);
+    }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+   
+{% endblock content %}

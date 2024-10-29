@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,3 +139,17 @@ AUTH_USER_MODEL='userauths.User'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Youtube Studio",
+    "site_header": "Youtube Studio",
+    "site_brand": "Think | Create | Inspire",
+    # "site_logo": "static/images/youtube-icon.png",
+    "copyright": "youtube.com",
+    # "order_with_respect_to": ["blog"]
+}
+
+
+
