@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     
     'core',
     'userauths',
+    
+    # Ajax
+    'taggit',
 ]
 
 MIDDLEWARE = [
