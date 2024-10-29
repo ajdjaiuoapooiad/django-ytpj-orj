@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # Ajax
     'taggit',
+    'import_export',
 ]
 
 MIDDLEWARE = [
