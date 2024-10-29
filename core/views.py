@@ -1,9 +1,16 @@
 from django.shortcuts import render
 
+from core.models import Video
+
 
 
 def index(req):
-    return render(req,'index.html')
+    videos = Video.objects.all()
+    
+    context = {
+        'videos': videos,
+    }
+    return render(req,'index.html',context)
 
 def detail(req):
     return render(req,'detail.html')

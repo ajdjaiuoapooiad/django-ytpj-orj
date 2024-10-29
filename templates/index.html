@@ -22,7 +22,88 @@
 
 {% block content %}
 
+    {% for v in videos %}
 
+
+
+        <div class="mainBody">
+            {% include 'partials/sidebar.html' %}
+
+            <div class="videos">
+                
+
+                <div class="drop-down-container">
+
+                    <h1 style="font-size: 20px;">Recommends</h1>
+
+                    <div class="dropdown-content-background">
+                        <div class="dropdown-contents">
+                            <div class="dropdown-content">
+                                <i class="material-icons">videocam</i>
+                                <span>Create</span>
+                            </div>
+
+                            <div class="dropdown-content">
+                                <i class="material-icons">settingss</i>
+                                <span>Setting</span>
+                            </div>
+
+                            <div class="dropdown-content">
+                                <i class="material-icons">person</i>
+                                <span>Switch Account</span>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-container">
+
+                    {% for v in videos %}
+                    <div class="video">
+
+                            <div class="video-thumbnail">
+                                <a href=""><img src="{{v.image.url}}" alt=""></a>
+                            </div>
+                            
+                            <div class="video-details">
+                                <div class="author">
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+
+                                </div>
+
+                                <div class="title">
+
+                                    <a href="">
+                                        <h3>{{v.title|truncatechars:34}}</h3>
+                                    </a>
+                                    <a href="">
+                                        <small>
+                                            <a href="">
+
+                                            </a>
+                                            <i class="fas fa-check-circle"></i> 
+                                        </small>
+                                    </a>
+                                    <span>{{v.views}} Views, {{v.date|timesince}} ago</span>
+                                </div>
+                            </div>
+                    </div>
+
+                    {% endfor %}
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    {% endfor %}
 
    
 {% endblock content %}
