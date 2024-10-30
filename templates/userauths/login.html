@@ -68,7 +68,7 @@
 							<form class="loginForm" method="POST">
                                 {% csrf_token %}
                                 
-                                
+                                {% include 'partials/alert.html' %}
 								<div class="input-fields-div autoMargin">
 									<div class="input-field">
                                         <input name="email" id="user_name" type="email" class="validate">

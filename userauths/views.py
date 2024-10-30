@@ -1,13 +1,39 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from userauths.forms import UserRegisterForm
 from ytpj import settings
 from django.contrib.auth import login,authenticate
 
 User=settings.AUTH_USER_MODEL
 
 
-def registerView(req):
-    return render(req,'userauths/register.html')
+def registerView(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+    
+    if request.method=='POST':
+        form=UserRegisterForm(request.POST or None)
+        
+        if form.is_valid():
+            new_user=form.save()
+            username=form.cleaned_data.get('username')
+            messages.success(request,f'Hey {username}, Account Created')
+            new_user=authenticate(
+                username=form.cleaned_data['email'],
+                password=form.cleaned_data['password1'],
+                )
+            login(request,new_user)
+            return redirect('index')
+    else:
+        form=UserRegisterForm()
+        messages.warning(request,'失敗しました')
+        
+    context={
+        'form':form,
+    }  
+    
+    return render(request,'userauths/register.html',context)
 
 def loginView(request):
     if request.user.is_authenticated:

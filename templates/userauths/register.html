@@ -47,9 +47,19 @@
 
 						<div id="formContainer" class="goRight">
 
+					
+
+
+
+
+
+
+
                             <form class="signUpForm"  name="myForm" method="POST">
                                 {% csrf_token %}
 
+
+								{% include 'partials/alert.html' %}
 								<div class="input-fields-div autoMargin">
 									<div class="row input-inline-field">
 
@@ -104,13 +114,20 @@
                                                 <span class="helper-text" data-error="wrong" data-success="right">Use 8 or more characters with a mix of letters, numbers & symbols</span>
                                             </div>
 									</div>
-									<p>I have an account <a href="" class="backToLogin">Login Now</a></p>
+									<p>I have an account <a href="{% url 'sign-in' %}" class="backToLogin">Login Now</a></p>
 								</div>
 
 								<div class="input-fields-div autoMargin right-align">
 									<button type="submit" onclick="register()" class="registerBtn waves-effect waves-light btn" id="reg__btn">Register</button>
 								</div>
 							</form>
+
+
+
+
+
+
+
 							<div class="clearfix"></div>
 <!-- 
 							<form class="loginForm">
