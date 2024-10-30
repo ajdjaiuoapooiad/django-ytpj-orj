@@ -6,4 +6,5 @@ from core import views
 
 urlpatterns = [
     path('',views.index,name='index'),
+    path('video/<int:pk>/',views.detail,name='video-detail'),
 ]

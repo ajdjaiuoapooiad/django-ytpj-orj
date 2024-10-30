@@ -12,8 +12,15 @@ def index(req):
     }
     return render(req,'index.html',context)
 
-def detail(req):
-    return render(req,'detail.html')
+
+
+def detail(req,pk):
+    video = Video.objects.get(id=pk)
+    
+    context = {
+        'video': video,
+    }
+    return render(req,'detail.html',context)
 
 def create(req):
     return render(req,'create.html')

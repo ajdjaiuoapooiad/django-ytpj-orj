@@ -70,20 +70,20 @@
                             <div class="video-details">
                                 <div class="author">
                                     <a href="">
-                                        <img src="" alt="">
+                                        <img src="{{v.user.channel.image.url}}" alt="">
                                     </a>
 
                                 </div>
 
                                 <div class="title">
 
-                                    <a href="">
+                                    <a href="{% url 'video-detail' v.id %}">
                                         <h3>{{v.title|truncatechars:34}}</h3>
                                     </a>
                                     <a href="">
                                         <small>
                                             <a href="">
-
+                                                {{v.user.channel.channel_name}}
                                             </a>
                                             <i class="fas fa-check-circle"></i> 
                                         </small>
