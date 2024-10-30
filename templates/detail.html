@@ -26,5 +26,270 @@
 {% block content %}
 
 
+    <main class="single-pages">
+        <section class="video-items flex">
+            <div class="left">
+                <div class="left-content">
+                    <video controls>
+                        <source src="{{video.video.url}}" type="video/mp4" poster="images/1.jpg">
+                    </video>
+
+                    <div class="tag">
+                        <label for="" class="tags">
+                            
+                            {% for tag in video.tags.all %}
+                            <a id="channel-tag" href="">
+                                #{{tag.name}}
+                            </a>
+                            {% endfor %}
+                        </label>
+
+                        <p>{{video.title}}</p>
+                    </div>
+
+                    <div class="view flex2 border-bottom">
+                        <div class="view-text">
+                            <span>{{video.views}} View</span>
+                        </div>
+
+                        <div class="flex">
+                            <div class="icon">
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-up"></i></button>
+                                <label for=""><span id="like-count"></span></label>
+                            </div>
+
+                            <div class="icon">
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-down"></i></button>
+                                <label for=""><span id="like-count"></span></label>
+                                
+                            </div>
+
+                            <div class="icon">
+                                <a href=""><i class="fa fa-share"></i></a>
+                                <label for="">Share</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""><i class="fa fa-scissors"></i></a>
+                                <label for="">Clips</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href="">
+                                    <i class="fa fa-bookmark"></i>
+                                    <label for="">Save</label>
+                                </a>
+                            </div>
+
+                            {% if video.user == request.user %}
+                            <div class="icon">
+                                <a href=""><i class="fa fa-pen"></i></a>
+                                <label for="">Edit</label>
+                            </div>
+                            {% endif %}
+
+                            <div class="icon">
+                                <a href=""><i class="fa fa-ellipsis"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Channel        --------------------------->
+
+                    <div class="details flex border-bottom">
+                        <div class="img">
+                            <img 
+                                src="{{video.user.channel.image.url}}" 
+                                alt=""
+                            >
+                        </div>
+                        
+                        <div class="heading">
+                            <h4>
+                                <a href="">{{video.user.channel.channel_name}}</a>
+                                {% if video.user.channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %}     
+                            </h4>
+                            <span id="count">{{video.user.channel.subscribers.all.count}}</span> <span>Subscribers</span>
+                            <h5>{{video.description}}</h5>
+                            <span> <i class="fa fa-caret-down"></i> show more</span>
+                        </div>
+
+                        <div>
+                            <button  id="sub_btn" onclick="addsub()" class="subscribe-btn">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+
+
+        <!-- Comment        ------------------------------------>
+
+
+
+                    <hr class="mid-hr">
+
+                    <div class="comment">
+                        <div class="comment-heading flex">
+                            <h4><b>{{comment.count}} Comments</b></h4>
+                            <h4><i class="fas fa-list-ul"></i> <label>Sort By</label> </h4>
+                        </div>
+                    </div>
+
+
+
+                    <div class="details comment-self flex">
+                        <div class="img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">
+                        </div>
+                        
+                        {% if request.user.is_authenticated %}
+                        <form action="" style="width: 100%;" id="comment_form">
+
+                            {% csrf_token %}
+                            <div class="heading flex">
+                                <input type="hidden" value="{{ video.id }}" id="id" name="id">
+                                <input type="text" placeholder="Add a comment..." id="comment" name="comment">
+                                <button ><i class="material-icons">send</i></button>
+                            </div>
+                        </form>
+                        {% else %}
+                            <a href="../../admin/login" style="margin-top: 10px;">*Login To Comment</a>
+                        {% endif %}
+                     
+                    </div>
+
+
+                        <!-- Comment form -->
+
+                    <div id="comment-wrapper">
+
+                        {% for c in comment %}
+                        <div class="comment-tray">
+
+                            <div class="details-Comment">
+                                <div class="details flex">
+        
+                                    <div class="img">
+                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"  alt="">
+                                    </div>
+                                    <div class="heading">
+                                        <h4><b>{{c.user.username|title}} </b> &nbsp; •<span>{{c.date|timesince}} ago</span></h4>
+                                        <p>{{c.comment}}</p>         
+            
+                                        <div class="comment-like flex">
+                                            <div class="icon">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                <label for=""><small>2</small></label>
+                                            </div>
+            
+                                            <div class="icon">
+                                                <i class="fa fa-thumbs-down"></i>
+                                                <label for=""><small>Dislike</small></label>
+                                            </div>
+            
+                                            <div class="icon">
+                                                <label for=""><a><small>Reply</small></a></label>
+                                            </div>
+
+                                            <div class="icon">
+                                                <input type="hidden" value="{{ c.id }}" name="" id="">
+                                                <label for=""><button data-cid={{c.id}} class="btn-del" style="color: red;"><small>Delete</small></button></label>
+                                            </div>
+            
+                                        </div>
+                                    </div>
+        
+        
+                                </div>
+                            </div>
+
+                            <!-- Comment Reply -->
+                            <div class="replay">
+                                <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Reply</label>
+                                <div class="replay-details flex">
+                                    <div class="img">
+                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"  alt="">
+                                    </div>
+                                    <div class="text">
+                                        <h4><label for="">Desphixs</label><i class="fas fa-check-circle"></i><span>16 Months ago</span> </h4>
+                                        <p>Thank you</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Right Content -->
+
+            <div class="right">
+                <div class="right-content">
+                    <button class="chat">Show Chat Reply</button>
+                    <div class="tags">
+                        <label for="" class="tags-bg">All</label>
+                        <label for="" class="tags-bg">Web Design</label>
+                        <label for="" class="tags-bg">Frontend</label>
+                        <label for="" class="tags-bg">HTML</label>
+                    </div>
+
+                    <div class="video-items video-sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Youtube Clone Using HTML, CSS and JS</p>
+                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
+                            <span><small>203 K Views . 1 Week Ago</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="video-items video-sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Youtube Clone Using HTML, CSS and JS</p>
+                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
+                            <span><small>203 K Views . 1 Week Ago</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="video-items video-sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Youtube Clone Using HTML, CSS and JS</p>
+                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
+                            <span><small>203 K Views . 1 Week Ago</small> </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+
+
+
+
+
+
+
+
 
 {% endblock content %}
