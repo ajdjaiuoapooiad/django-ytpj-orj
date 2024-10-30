@@ -243,38 +243,20 @@
                         <label for="" class="tags-bg">HTML</label>
                     </div>
 
+                    {% for v in videos %}
                     <div class="video-items video-sidebar flex">
+                            
                         <a href="">
-                            <img src="{% static 'images/1.jpg' %}" alt="">
+                            <img src="{{v.image.url}}" alt="">
                         </a>
+                        
                         <div class="details">
-                            <p>Youtube Clone Using HTML, CSS and JS</p>
-                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
-                            <span><small>203 K Views . 1 Week Ago</small> </span>
+                            <p>{{v.title}}</p>
+                            <span>{{v.user.channel.channel_name}}<i class="fa fa-check-circle"></i></span><br>
+                            <span><small>{{v.views}} Views . {{v.date|timesince}} ago</small> </span>
                         </div>
                     </div>
-
-                    <div class="video-items video-sidebar flex">
-                        <a href="">
-                            <img src="{% static 'images/1.jpg' %}" alt="">
-                        </a>
-                        <div class="details">
-                            <p>Youtube Clone Using HTML, CSS and JS</p>
-                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
-                            <span><small>203 K Views . 1 Week Ago</small> </span>
-                        </div>
-                    </div>
-
-                    <div class="video-items video-sidebar flex">
-                        <a href="">
-                            <img src="{% static 'images/1.jpg' %}" alt="">
-                        </a>
-                        <div class="details">
-                            <p>Youtube Clone Using HTML, CSS and JS</p>
-                            <span>Dephixs<i class="fa fa-check-circle"></i></span>
-                            <span><small>203 K Views . 1 Week Ago</small> </span>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     
                 </div>

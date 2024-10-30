@@ -16,9 +16,11 @@ def index(req):
 
 def detail(req,pk):
     video = Video.objects.get(id=pk)
+    videos = Video.objects.all()
     
     context = {
         'video': video,
+        'videos':videos,
     }
     return render(req,'detail.html',context)
 
