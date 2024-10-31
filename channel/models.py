@@ -20,7 +20,7 @@ STATUS = (
 
 
 class Channel(models.Model):
-    channel_art=models.ImageField(upload_to=user_derectory_path,default='images/channel-art.jpgpython')
+    channel_art=models.ImageField(upload_to=user_derectory_path,default='images/channel-art.jpg')
     image=models.ImageField(upload_to=user_derectory_path,default='images/user-image.png')
     full_name=models.CharField(max_length=100)
     channel_name=models.CharField(max_length=100)
