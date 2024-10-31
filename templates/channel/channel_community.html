@@ -53,8 +53,8 @@
                                     <i class="material-symbols-outlined">sort</i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="{% url 'edit-post' c.channel.id c.id %}"> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
-                                    <a href="{% url 'delete-post' c.channel.id c.id %}"> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
+                                    <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
+                                    <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
 
                         </div>
                         <div class="content">
-                            <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><h3>{{ c.content|truncatechars:200 }}</h3></a>
+                            <a href=""><h3>{{ c.content|truncatechars:200 }}</h3></a>
                             {% if c.image %}
                             <a href=""><img src="{{c.image.url}}" alt=""></a>
                             
@@ -72,12 +72,12 @@
                         </div>
                         <div class="icon-section">
                             <div class="single-icon">
-                                <a href="{% url 'community-post-like' c.id %}"><i class="material-icons material-symbols-outlined">thumb_up</i></a>
+                                <a href=""><i class="material-icons material-symbols-outlined">thumb_up</i></a>
                                 <span>{{c.likes.all.count}}</span>
                             </div>
     
                             <div class="single-icon">
-                                <a href="{% url 'community-post-like' c.id %}"><i class="material-icons material-symbols-outlined">thumb_down</i></a>
+                                <a href=""><i class="material-icons material-symbols-outlined">thumb_down</i></a>
                             </div>
 
                             <div class="single-icon">
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="single-icon">
-                                <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><i class="material-icons material-symbols-outlined">chat</i></a>
+                                <a href=""><i class="material-icons material-symbols-outlined">chat</i></a>
                                 <span>{{c.comments.all.count}}</span>
                             </div>
                         </div>
