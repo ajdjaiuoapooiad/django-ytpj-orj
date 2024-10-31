@@ -53,7 +53,7 @@
             <i class="material-icons display-this">notifications</i>
 
             {% if request.user.is_authenticated %}
-            <a href=""><i id="drop-down" class="material-icons display-this">account_circle</i></a>
+            <a href="{% url 'channel-profile' request.user.id %}"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
             {% else %}
             <a href=""><i id="drop-down" class="material-icons display-this">account_circle</i></a>
             {% endif %}
