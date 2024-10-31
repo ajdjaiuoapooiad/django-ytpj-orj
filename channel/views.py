@@ -19,7 +19,7 @@ def channel_profile(request,channel_name):
     return render(request,'channel/channel.html',context)
 
 
-
+@login_required
 def video_upload(request):
     user=request.user
     
