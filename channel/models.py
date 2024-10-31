@@ -14,7 +14,7 @@ def user_derectory_path(instance,filename):
 
 STATUS = (
     ('Active','Active'),
-    ('Disabled','Disabled'),
+    ('Disabled','Disabled'),#垢ban
 )
 
 
@@ -29,7 +29,7 @@ class Channel(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(choices=STATUS,max_length=100,default='Active')
     user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,blank=True,related_name="channel")
-    subscibers=models.ManyToManyField(User,related_name="user_subs")
+    subscibers=models.ManyToManyField(User,related_name="user_subs",blank=True)
     verified=models.BooleanField(default=False)
     
     total_view=models.PositiveIntegerField(default=0)
@@ -46,4 +46,44 @@ class Channel(models.Model):
     
     def __str__(self):
         return self.channel_name
+    
+    
+    
+
+class Community(models.Model):
+    channel=models.ForeignKey(Channel,on_delete=models.CASCADE)
+    image=models.ImageField(upload_to=user_derectory_path,null=True,blank=True)
+    content=models.TextField(null=True,blank=True)
+    date=models.DateTimeField(auto_now_add=True)
+    status=models.CharField(choices=STATUS,default='Active',max_length=100)
+    likes=models.ManyToManyField(User,blank=True)
+    
+    def __str__(self):
+        return self.channel.channel_name
+    
+    class Meta:
+        verbose_name='Community'
+        verbose_name_plural='Community Posts'
+    
+    
+    
+    
+class CommunityComment(models.Model):
+    community=models.ForeignKey(Community,on_delete=models.CASCADE,related_name="comments")
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    comment=models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
+    active=models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.community.channel.channel_name
+    
+    
+    class Meta:
+        verbose_name='Community Comments'
+        verbose_name_plural='Community Comments'
+    
+    
+    
+    
     
