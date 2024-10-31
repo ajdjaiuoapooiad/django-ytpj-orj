@@ -45,3 +45,30 @@ def video_upload(request):
     
 
 
+@login_required
+def video_edit(request,video_id,channel_id):
+    user=request.user
+    video=Video.objects.get(id=video_id)
+    channel=Channel.objects.get(id=channel_id)
+    
+    if request.method=='POST':
+        form=VideoCreateForm(request.POST,request.FILES,instance=video)
+        
+        if form.is_valid():
+            new_form=form.save(commit=False)
+            new_form.user=user
+            new_form.save()
+            form.save_m2m()
+            messages.success(request,f'Video Editted successfully')
+            return redirect('index')
+        
+    else:
+        form=VideoCreateForm(instance=video)
+        
+    context={
+        'form': form,
+        'video': video,
+    }
+    
+    return render(request,'channel/upload_video.html',context)
+

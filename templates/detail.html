@@ -83,7 +83,7 @@
 
                             {% if video.user == request.user %}
                             <div class="icon">
-                                <a href=""><i class="fa fa-pen"></i></a>
+                                <a href="{% url 'edit-video' video.user.id video.id %}"><i class="fa fa-pen"></i></a>
                                 <label for="">Edit</label>
                             </div>
                             {% endif %}

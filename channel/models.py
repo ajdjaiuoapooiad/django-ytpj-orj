@@ -28,7 +28,7 @@ class Channel(models.Model):
     keyword=TaggableManager
     date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(choices=STATUS,max_length=100,default='Active')
-    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,blank=True)
+    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,blank=True,related_name="channel")
     subscibers=models.ManyToManyField(User,related_name="user_subs")
     verified=models.BooleanField(default=False)
     
