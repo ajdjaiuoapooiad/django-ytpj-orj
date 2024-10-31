@@ -7,7 +7,7 @@ User=settings.AUTH_USER_MODEL
 
 
 def user_derectory_path(instance,filename):
-    return 'user_{0}/{1}'.format(instance.user.id,filename)
+    return 'user_{0}/{1}'.format(instance.channel.user.id,filename)
 
 
 
