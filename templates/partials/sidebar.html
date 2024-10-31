@@ -47,7 +47,7 @@
         
         {% if not request.user.is_authenticated %}
         <!-- Single Category -->
-        <a href="">
+        <a href="{% url 'sign-in' %}">
             <div class="sidebar-category">
                 <i class="material-icons">login</i>
                 <span>Login</span>
@@ -55,7 +55,7 @@
         </a>
         {% else %}
         <!-- Single Category -->
-        <a href="">
+        <a href="{% url 'sign-out' %}">
             <div class="sidebar-category">
                 <i class="material-icons">logout</i>
                 <span>Logout</span>

@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from userauths.forms import UserRegisterForm
 from ytpj import settings
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 
 User=settings.AUTH_USER_MODEL
 
@@ -58,8 +58,11 @@ def loginView(request):
             messages.warning(request,'Email or Password , does not exist')
     
     
+    
     return render(request,'userauths/login.html')
 
-def logoutView(req):
-    return render(req,'userauths/login.html')
+def logoutView(request):
+    logout(request)
+    messages.success(request,'You are logged out')
+    return render(request,'userauths/login.html')
 
