@@ -23,7 +23,7 @@
     </div>
     <div class="channel-header-btns">
         {% if request.user == channel.user %}
-        <div><a href="{% url 'studio'  %}" class="channel-join">Studio</a></div>
+        <div><a href="" class="channel-join">Studio</a></div>
         {% endif %}
 
         {% if request.user != channel.user %}
@@ -34,14 +34,13 @@
 </div>
 <div class="channel-header-links flex">
     <a href="{% url 'channel-profile' channel.id %}" class="display-this">Home</a>
-    <a href="{% url 'channel-videos' channel.id %}" class="display-this">Videos</a>
-    <a href="{% url 'channel-community' channel.id %}" class="dont-display-thdis">Community</a>
+    <a href="" class="display-this">Videos</a>
+    <a href="" class="dont-display-thdis">Community</a>
     <!-- <a href="" class="dont-display-this">Membership</a> -->
     <!-- <a href="" class="dont-display-this">Channels</a> -->
-    <a href="{% url 'channel-about' channel.id %}" class="displhray-this">About</a>
+    <a href="" class="displhray-this">About</a>
     <a href="" class="dont-display-this"><i class="material-icons">search</i></a>
 </div>
 <hr>
 
 
-{% include 'channel/partials/subscribe-axios.html' %}
