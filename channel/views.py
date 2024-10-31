@@ -27,6 +27,39 @@ def channel_profile(request,channel_name):
     return render(request,'channel/channel.html',context)
 
 
+
+def channel_videos(request,channel_name):
+    channel = get_object_or_404(Channel,id=channel_name)
+    videos=Video.objects.filter(user=channel.user,visibility='public').order_by('-date')
+    
+    
+    
+    context={
+        'channel': channel,
+        'videos': videos,
+    }
+    
+    return render(request,'channel/channel_videos.html',context)
+
+
+def channel_about(request,channel_name):
+    channel = get_object_or_404(Channel,id=channel_name)
+    videos=Video.objects.filter(user=channel.user,visibility='public').order_by('-date')
+    
+    
+    
+    context={
+        'channel': channel,
+        'videos': videos,
+    }
+    
+    return render(request,'channel/channel_about.html')
+    
+    
+
+
+
+# video-upload
 @login_required
 def video_upload(request):
     user=request.user

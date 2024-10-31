@@ -34,7 +34,7 @@
 </div>
 <div class="channel-header-links flex">
     <a href="{% url 'channel-profile' channel.id %}" class="display-this">Home</a>
-    <a href="" class="display-this">Videos</a>
+    <a href="{% url 'channel-videos' channel.id %}" class="display-this">Videos</a>
     <a href="" class="dont-display-thdis">Community</a>
     <!-- <a href="" class="dont-display-this">Membership</a> -->
     <!-- <a href="" class="dont-display-this">Channels</a> -->
