@@ -64,7 +64,7 @@
 
                         </div>
                         <div class="content">
-                            <a href=""><h3>{{ c.content|truncatechars:200 }}</h3></a>
+                            <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><h3>{{ c.content|truncatechars:200 }}</h3></a>
                             {% if c.image %}
                             <a href=""><img src="{{c.image.url}}" alt=""></a>
                             

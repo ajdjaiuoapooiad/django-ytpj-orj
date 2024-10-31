@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
 from channel.forms import VideoCreateForm
-from channel.models import Channel, Community
+from channel.models import Channel, Community, CommunityComment
 from core.models import  Video
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -47,26 +47,44 @@ def channel_community(request,channel_name):
     channel = get_object_or_404(Channel,id=channel_name)
     community = Community.objects.filter(channel=channel,status='Active').order_by('-date')
     
-    
     context={
         'channel': channel,
         'community':community,
     }
-    
     return render(request,'channel/channel_community.html',context)
 
-
-
-def channel_about(request,channel_name):
+   
+   
+   
+   
+   
+def channel_community_detail(request,channel_name,community_id):
     channel = get_object_or_404(Channel,id=channel_name)
+    community = Community.objects.get(channel=channel,status='Active',id=community_id)
+    comments=CommunityComment.objects.filter(community=community,active=True).order_by('-date')
+    
     
     context={
         'channel': channel,
+        'community':community,
+        'comments': comments,
     }
+    return render(request,'channel/channel_community_detail.html',context)
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
     
-    return render(request,'channel/channel_about.html',context)
+def channel_about(request,channel_name):
     
-    
+    return render(request,'channel/channel_about.html')
+
+
+
 
 
 
