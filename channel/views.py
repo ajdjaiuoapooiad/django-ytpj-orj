@@ -42,18 +42,27 @@ def channel_videos(request,channel_name):
     return render(request,'channel/channel_videos.html',context)
 
 
-def channel_about(request,channel_name):
+
+def channel_community(request,channel_name):
     channel = get_object_or_404(Channel,id=channel_name)
-    videos=Video.objects.filter(user=channel.user,visibility='public').order_by('-date')
-    
     
     
     context={
         'channel': channel,
-        'videos': videos,
     }
     
-    return render(request,'channel/channel_about.html')
+    return render(request,'channel/channel_community.html',context)
+
+
+
+def channel_about(request,channel_name):
+    channel = get_object_or_404(Channel,id=channel_name)
+    
+    context={
+        'channel': channel,
+    }
+    
+    return render(request,'channel/channel_about.html',context)
     
     
 
