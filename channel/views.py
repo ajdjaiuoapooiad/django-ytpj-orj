@@ -79,7 +79,7 @@ def channel_community_detail(request,channel_name,community_id):
  
   
     
-def channel_about(request,channel_name):
+def channel_about(request):
     
     return render(request,'channel/channel_about.html')
 
@@ -116,10 +116,10 @@ def video_upload(request):
 
 
 @login_required
-def video_edit(request,video_id,channel_id):
-    user=request.user
+def video_edit(request,channel_id,video_id):
     video=Video.objects.get(id=video_id)
     channel=Channel.objects.get(id=channel_id)
+    user=request.user
     
     if request.method=='POST':
         form=VideoCreateForm(request.POST,request.FILES,instance=video)

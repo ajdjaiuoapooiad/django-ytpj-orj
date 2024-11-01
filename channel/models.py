@@ -2,12 +2,11 @@ from django.db import models
 from taggit.managers import TaggableManager
 from core.models import user_derectory_path
 from ytpj import settings
+from django.db.models.signals import post_save
+
 
 User=settings.AUTH_USER_MODEL
 
-
-def user_derectory_path(instance,filename):
-    return 'user_{0}/{1}'.format(instance.channel.user.id,filename)
 
 
 
@@ -25,10 +24,10 @@ class Channel(models.Model):
     full_name=models.CharField(max_length=100)
     channel_name=models.CharField(max_length=100)
     description=models.TextField(null=True,blank=True)
-    keyword=TaggableManager
+    keyword=TaggableManager()
     date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(choices=STATUS,max_length=100,default='Active')
-    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,blank=True,related_name="channel")
+    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,related_name="channel")
     subscibers=models.ManyToManyField(User,related_name="user_subs",blank=True)
     verified=models.BooleanField(default=False)
     
@@ -47,6 +46,25 @@ class Channel(models.Model):
     def __str__(self):
         return self.channel_name
     
+    def save(self, *args, **kwargs):
+        if self.channel_name == "":
+            self.channel_name = self.user.username
+        super().save(*args, **kwargs)
+
+
+def create_user_channel(sender, instance, created, **kwargs):
+    if created:
+        Channel.objects.create(user=instance)
+
+def save_user_channel(sender, instance, **kwargs):
+    instance.channel.save()
+
+post_save.connect(create_user_channel, sender=User)
+post_save.connect(save_user_channel, sender=User)
+    
+
+def user_directory_path(instance, filename):
+    return "user_{0}/{1}".format(instance.channel.user.id, filename)
     
     
 
