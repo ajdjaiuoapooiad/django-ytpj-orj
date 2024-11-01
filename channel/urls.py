@@ -14,8 +14,8 @@ urlpatterns = [
     
     
     # video-upload
-    path('channel/create/video/',views.video_upload,name='upload-video'),
-    path('channel/edit-video/<channel_id>/<video_id>/',views.video_edit,name='edit-video'),
-    path('channel/delete-video/<video_id>/',views.video_delete,name='delete-video'),
+    path('channel/create/video/',views.video_upload,name='video-upload'),
+    path('channel/edit-video/<channel_id>/<video_id>/',views.video_edit,name='video-edit'),
+    path('channel/delete-video/<video_id>/',views.video_delete,name='video-delete'),
     
 ]
