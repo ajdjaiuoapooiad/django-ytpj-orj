@@ -68,12 +68,14 @@
                     <div class="video">
 
                             <div class="video-thumbnail">
-                                <a href=""><img src="{{v.image.url}}" alt=""></a>
+                                <a href="{% url 'video-detail' v.id %}">
+                                    <img src="{{v.image.url}}" alt="">
+                                </a>
                             </div>
                             
                             <div class="video-details">
                                 <div class="author">
-                                    <a href="">
+                                    <a href="{% url 'channel-profile' v.user.channel.id %}">
                                         <img src="{{v.user.channel.image.url}}" alt="">
                                     </a>
 
@@ -86,7 +88,7 @@
                                     </a>
                                     <a href="">
                                         <small>
-                                            <a href="">
+                                            <a href="{% url 'channel-profile' v.user.channel.id %}">
                                                 {{v.user.channel.channel_name}}
                                             </a>
                                             <i class="fas fa-check-circle"></i> 
