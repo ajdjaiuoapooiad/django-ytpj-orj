@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'userauths',
     'channel',
+    'useradmin',
     
     # Ajax
     'taggit',

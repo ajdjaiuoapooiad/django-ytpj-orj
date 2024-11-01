@@ -26,6 +26,7 @@ urlpatterns = [
     path('',include('core.urls')),
     path('user/',include('userauths.urls')),
     path('c/',include('channel.urls')),
+    path('studio/',include('useradmin.urls')),
 ]
 
 if settings.DEBUG:

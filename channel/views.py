@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from channel.forms import VideoCreateForm
@@ -142,3 +143,15 @@ def video_edit(request,channel_id,video_id):
     
     return render(request,'channel/upload_video.html',context)
 
+
+@login_required
+def video_delete(request,video_id):
+    video=Video.objects.get(id=video_id)
+    user=request.user
+    
+    if request.user==video.user:
+        video.delete()
+        messages.success(request,f'Video deleted successfully!')
+        return redirect('index')
+    else:
+        return HttpResponse('You are not allowed to delete this video')
