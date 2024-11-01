@@ -10,7 +10,7 @@ urlpatterns = [
     path("<channel_name>/about/",views.channel_about,name='channel-about'),
     path("<channel_name>/community/",views.channel_community,name='channel-community'),
     path("<channel_name>/community/<int:community_id>/",views.channel_community_detail,name='channel-community-detail'),
-     
+    path("channel/create-community/<int:channel_id>/",views.create_community_post,name='create-community'),
     
     
     # video-upload

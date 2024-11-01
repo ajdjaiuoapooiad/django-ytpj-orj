@@ -23,7 +23,7 @@
     </div>
     <div class="channel-header-btns">
         {% if request.user == channel.user %}
-        <div><a href="" class="channel-join">Studio</a></div>
+        <div><a href="{% url 'studio' %}" class="channel-join">Studio</a></div>
         {% endif %}
 
         {% if request.user != channel.user %}

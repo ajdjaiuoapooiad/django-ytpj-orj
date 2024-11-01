@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from channel.forms import VideoCreateForm
+from channel.forms import CommunityCreateForm, VideoCreateForm
 from channel.models import Channel, Community, CommunityComment
 from core.models import  Video
 from django.contrib.auth.decorators import login_required
@@ -73,6 +73,33 @@ def channel_community_detail(request,channel_name,community_id):
     return render(request,'channel/channel_community_detail.html',context)
 
  
+ 
+
+
+@login_required
+def create_community_post(request,channel_id):
+    user=request.user
+    channel=Channel.objects.get(id=channel_id)
+    
+    if request.method=='POST':
+        form=CommunityCreateForm(request.POST,request.FILES)
+        
+        if form.is_valid():
+            new_form=form.save(commit=False)
+            new_form.channel=channel
+            new_form.save()
+            post_id=new_form.id
+            messages.success(request,'Community created successfully!')
+            return redirect('channel-community',channel.id)
+    else:
+        form=CommunityCreateForm()
+        
+    context={
+        'form': form,
+    }
+            
+            
+    return render(request,'channel/create-post.html',context)
  
  
  
