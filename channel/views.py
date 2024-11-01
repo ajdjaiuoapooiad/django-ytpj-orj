@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -107,9 +108,16 @@ def create_community_post(request,channel_id):
  
   
     
-def channel_about(request):
+def channel_about(request,channel_name):
+    channel=get_object_or_404(Channel,id=channel_name)
     
-    return render(request,'channel/channel_about.html')
+    
+    context={
+        'channel': channel,
+    }
+    
+    
+    return render(request,'channel/channel_about.html',context)
 
 
 
