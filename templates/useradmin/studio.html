@@ -196,9 +196,10 @@
                                                             <a href="{% url 'video-detail' v.id  %}"><img class="avatar avatar-sm me-2 avatar-img roundded-circle" style="width: 100px; height: 50px; object-fit: cover;" src="{{ v.image.url }}" alt="User Image" />{{v.title|truncatechars:40}}</a>
                                                         </h2>
                                                     </td>
+                                                   
                                                     <td><span class="badge bg-dark">{{ v.visibility|title }}</span></td>
 
-                                                    <td><small>{{ v.date }}</small></td>
+                                                    <td><small>{{ v.date|timesince }}</small></td>
                                                     <td>{{ v.views }}</td>
                                                     <td>{{ v.comment.all.count }}</td>
                                                     <td><span class="">{{v.likes.all.count}}</span></td>

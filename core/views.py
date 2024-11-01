@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from core.models import Video
+from core.models import Comment, Video
 
 
 
@@ -17,10 +17,12 @@ def index(req):
 def detail(req,pk):
     video = Video.objects.get(id=pk)
     videos = Video.objects.all()
+    comments=Comment.objects.filter(video=video,active=True).order_by('-date')
     
     context = {
         'video': video,
         'videos':videos,
+        'comments': comments,
     }
     return render(req,'detail.html',context)
 
