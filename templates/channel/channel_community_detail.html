@@ -108,12 +108,16 @@
                             <!-- Create Comment Section -->
                             <div class="create-comment">
                                 <div class="create-comment-img">
-                                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" alt="">
+                                    <img src="{{request.user.channel.image.url}}" alt="">
                                 </div>
 
 
-                                <!-- Comment Form -->
-                                <form action="" method="POST">
+
+
+
+
+                            <!-- Comment Form           ------------------------------>
+                                <form action="{% url 'create-comment' community.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="create-comment-input">
                                         <input class="comment-class" name="comment" id="comment" type="text" placeholder="Add a comment">
@@ -124,6 +128,10 @@
 
 
 
+
+
+
+
                             </div>
     
                             <!-- Comments Section -->
@@ -131,7 +139,7 @@
                             <div class="comment-wrap">
                                 <div class="comments">
                                     <div class="comment-img">
-                                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" alt="">
+                                        <img src="{{c.user.channel.image.url}}" alt="">
                                     </div>
                                     <div class="comment-content">
                                         <div class="comment-header">
@@ -166,6 +174,13 @@
 
     </div>
 
+    
+
+ 
+    
+    
+
+    
     
 
 

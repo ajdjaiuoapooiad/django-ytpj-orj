@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 
 from channel.forms import CommunityCreateForm, VideoCreateForm
@@ -103,6 +103,19 @@ def create_community_post(request,channel_id):
     return render(request,'channel/create-post.html',context)
  
  
+@login_required
+def create_comment(request,community_id):
+    
+    if request.method == 'POST':
+        community=Community.objects.get(id=community_id,status='Active')
+        comment=request.POST.get('comment')
+        user=request.user
+        
+        new_comment=CommunityComment.objects.create(comment=comment,user=user,community=community)
+        new_comment.save()
+        messages.success(request,f'Comment created successfully!')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
  
  
  

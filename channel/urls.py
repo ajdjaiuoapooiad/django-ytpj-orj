@@ -13,7 +13,8 @@ urlpatterns = [
     
     # Create post
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
-    
+    path("channel/<int:community_id>/create-comment/",views.create_comment,name='create-comment'),
+
     
     # video-upload
     path('channel/create/video/',views.video_upload,name='video-upload'),

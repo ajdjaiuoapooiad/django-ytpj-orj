@@ -1,7 +1,7 @@
 
 from django import forms
 
-from channel.models import Community
+from channel.models import Community, CommunityComment
 from core.models import Video
 
 
@@ -25,8 +25,6 @@ class VideoCreateForm(forms.ModelForm):
 
 
 class CommunityCreateForm(forms.ModelForm):
-    
-
     class Meta:
         model=Community
         fields=[
