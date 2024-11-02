@@ -19,6 +19,9 @@ def detail(req,pk):
     videos = Video.objects.all()
     comments=Comment.objects.filter(video=video,active=True).order_by('-date')
     
+    video.views += 1
+    video.save()
+    
     context = {
         'video': video,
         'videos':videos,
