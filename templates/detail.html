@@ -147,6 +147,15 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">
                         </div>
                         
+
+
+
+
+
+
+
+            <!-- comment form               ------------------------------------->
+
                         {% if request.user.is_authenticated %}
                         <form action="" style="width: 100%;" id="comment_form">
 
@@ -161,6 +170,15 @@
                             <a href="../../admin/login" style="margin-top: 10px;">*Login To Comment</a>
                         {% endif %}
                      
+
+
+
+
+
+
+
+
+
                     </div>
 
 
@@ -267,7 +285,82 @@
 
 
 
+<!-- Ajax        -------------------------------------->
 
+<script type="text/javascript">
+    $(document).on('submit','#comment_form',function(e){
+        e.preventDefault()
+        let _comment=$('#comment').val()
+        console.log(_comment);
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'save-comment' %}",
+            data: {
+                id: $('#id').val(),   //commentに対するid
+                comment: _comment,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(){
+                console.log('Comment passed to backend');
+
+                let _html='<div class="details-Comment">\
+                                <div class="details flex">\
+                                    <div class="img">\
+                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">\
+                                    </div>\
+                                    <div class="heading">\
+                                        <h4><b>{{c.user.username|title}} </b> &nbsp; •<span>{{c.date|timesince}} ago</span></h4>\
+                                        <p> '+ _comment +' </p>\
+                                        <div class="comment-like flex">\
+                                            <div class="icon">\
+                                                <i class="fa fa-thumbs-up"></i>\
+                                                <label for=""><small>2</small></label>\
+                                            </div>\
+                                            <div class="icon">\
+                                                <i class="fa fa-thumbs-down"></i>\
+                                                <label for=""><small>Dislike</small></label>\
+                                            </div>\
+                                            <div class="icon">\
+                                                <label for=""><a><small>Reply</small></a></label>\
+                                            </div>\
+                                            <div class="icon">\
+                                                <input type="hidden" value="{{ c.id }}" name="" id="">\
+                                                <label for=""><button data-cid={{c.id}} class="btn-del" style="color: red;"><small>Delete</small></button></label>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <!-- Comment Reply -->\
+                            <div class="replay">\
+                                <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Reply</label>\
+                                <div class="replay-details flex">\
+                                    <div class="img">\
+                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"  alt="">\
+                                    </div>\
+                                    <div class="text">\
+                                        <h4><label for="">Desphixs</label><i class="fas fa-check-circle"></i><span>16 Months ago</span> </h4>\
+                                        <p>Thank you</p>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <hr>\
+                            '
+
+
+                            $('#comment-wrapper').prepend(_html);
+                            $('#comment').val('');
+            },
+            error: function(error){
+                console.log(error);
+                
+            }
+
+        })
+        
+    })
+</script>
 
 
 
