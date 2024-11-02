@@ -26,6 +26,8 @@
 {% block content %}
 
 
+
+
     <main class="single-pages">
         <section class="video-items flex">
             <div class="left">
@@ -360,6 +362,38 @@
         })
         
     })
+
+
+
+    // Delete-Comment
+    $('#comment-wrapper').on('click','.btn-del',function(){
+        console.log('Delete comment button is clicked');
+        let id = $(this).attr('data-cid')
+        
+        mydata = {
+            cid: id
+        }
+        mythis = $(this)
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'delete-comment' %}",
+            data: mydata,
+
+            success: function(data){
+                if(data.status === 1){
+                    $(mythis).closest('.comment-tray').fadeOut();
+                }
+                if(data.status === 0){
+                    alert('Unabled to delete comment, try again later ...')
+                }
+            }
+        })
+
+    })
+
+
+
 </script>
 
 
