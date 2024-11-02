@@ -6,7 +6,7 @@ from core.models import Comment, Video
 
 
 def index(req):
-    videos = Video.objects.all()
+    videos = Video.objects.filter(visibility='public')
     
     context = {
         'videos': videos,
@@ -17,7 +17,7 @@ def index(req):
 
 def detail(req,pk):
     video = Video.objects.get(id=pk)
-    videos = Video.objects.all()
+    videos = Video.objects.filter(visibility='public').order_by('-views')
     comments=Comment.objects.filter(video=video,active=True).order_by('-date')
     channel=Channel.objects.get(user=video.user)
     
