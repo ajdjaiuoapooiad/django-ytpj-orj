@@ -82,7 +82,7 @@ def create_community_post(request,channel_id):
     user=request.user
     channel=Channel.objects.get(id=channel_id)
     
-    if request.method=='POST':
+    if request.method == 'POST':
         form=CommunityCreateForm(request.POST,request.FILES)
         
         if form.is_valid():

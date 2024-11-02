@@ -1,7 +1,4 @@
 
-
-
-from dataclasses import fields
 from django import forms
 
 from channel.models import Community
