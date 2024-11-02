@@ -14,6 +14,8 @@ urlpatterns = [
     # Create post
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
     path("channel/<int:community_id>/create-comment/",views.create_comment,name='create-comment'),
+    path("channel/<int:community_id>/<int:comment_id>/",views.delete_comment,name='delete-comment'),
+
 
     
     # video-upload

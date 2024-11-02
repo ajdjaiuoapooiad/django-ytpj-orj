@@ -117,7 +117,14 @@ def create_comment(request,community_id):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     
  
- 
+def delete_comment(request,community_id,comment_id):
+    community=Community.objects.get(id=community_id)
+    comment=CommunityComment.objects.get(id=comment_id)
+    
+    
+    comment.delete()
+    messages.success(request,f'Comment deleted successfully!')
+    return redirect('channel-community-detail',community.channel.id,community.id)
  
   
     

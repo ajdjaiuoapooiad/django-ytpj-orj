@@ -161,9 +161,16 @@
                                         </div> -->
                                     </div>
                                 </div>
+
+
+                                
+                                {% if c.user == request.user %}
                                 <div class="delete-comment">
-                                    <a href=""><i class="material-icons">delete</i></a>
+                                    <a href="{% url 'delete-comment' community.id c.id %}"><i class="material-icons">delete</i></a>
                                 </div>
+                                {% endif %}
+
+
                             </div>
                             {% endfor %}
                         </div>
