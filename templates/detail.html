@@ -252,7 +252,7 @@
                         
                         <div class="details">
                             <p>{{v.title}}</p>
-                            <span>{{v.user.channel.channel_name}}<i class="fa fa-check-circle"></i></span><br>
+                            <span>{{v.user.channel.channel_name}} {% if v.user.channel.verified == True %} <i class="fa fa-check-circle"></i> {% endif %} </span><br>
                             <span><small>{{v.views}} Views . {{v.date|timesince}} ago</small> </span>
                         </div>
                     </div>
