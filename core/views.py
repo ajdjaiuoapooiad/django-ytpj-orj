@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from channel.models import Channel
 from core.models import Comment, Video
 
 
@@ -18,9 +19,13 @@ def detail(req,pk):
     video = Video.objects.get(id=pk)
     videos = Video.objects.all()
     comments=Comment.objects.filter(video=video,active=True).order_by('-date')
+    channel=Channel.objects.get(user=video.user)
     
     video.views += 1
     video.save()
+    
+    channel.total_view += 1
+    channel.save()
     
     context = {
         'video': video,

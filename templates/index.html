@@ -91,7 +91,9 @@
                                             <a href="{% url 'channel-profile' v.user.channel.id %}">
                                                 {{v.user.channel.channel_name}}
                                             </a>
+                                            {% if v.user.channel.verified == True %}
                                             <i class="fas fa-check-circle"></i> 
+                                            {% endif %}
                                         </small>
                                     </a>
                                     <span>{{v.views}} Views, {{v.date|timesince}} ago</span>
