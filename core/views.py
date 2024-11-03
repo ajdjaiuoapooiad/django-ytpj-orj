@@ -81,7 +81,7 @@ def add_new_sub(request,id):
     subscribers=Channel.objects.get(id=id)
     user=request.user
     
-    if user in subscribers.subscibers.all():
+    if user in subscribers.subscribers.all():
         subscribers.subscribers.remove(user)
         response = 'Subscribe'
         return JsonResponse(response,safe=False,status=200)

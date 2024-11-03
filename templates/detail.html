@@ -404,8 +404,8 @@
         axios
         .get("{% url 'add_sub' video.user.id %}")
         .then(response =>{
-            this.response=response.data;
-            suub_button.innerHTML=this.response;
+            this.response = response.data;
+            sub_button.innerHTML = this.response;
             loadsub()
             sub_button.classList.toggle('unsubscribe-btn')
         })
@@ -415,9 +415,9 @@
         axios
         .get("{% url 'load_sub' channel.pk %}")
         .then(response =>{
-            this.response=response.data;
-            subscriber_added=this.response;
-            subcounter.innerHTML=subscriber_added.length
+            this.response = response.data;
+            subscriber_added = this.response;
+            subcounter.innerHTML = subscriber_added.length
         })
     }
 

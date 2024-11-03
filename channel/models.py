@@ -24,7 +24,7 @@ class Channel(models.Model):
     full_name=models.CharField(max_length=100)
     channel_name=models.CharField(max_length=100)
     description=models.TextField(null=True,blank=True)
-    keyword=TaggableManager()
+    keyword=TaggableManager(blank=True)
     date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(choices=STATUS,max_length=100,default='Active')
     user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,related_name="channel")
