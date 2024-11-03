@@ -112,7 +112,7 @@
                                 {% if video.user.channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %}     
                             </h4>
                             <span id="count">{{video.user.channel.subscribers.all.count}}</span> <span>Subscribers</span>
-                            <h5>{{video.description}}</h5>
+                            <h5>{{video.description|linebreaksbr }}</h5>
                             <span> <i class="fa fa-caret-down"></i> show more</span>
                         </div>
 
@@ -312,7 +312,7 @@
                                         <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">\
                                     </div>\
                                     <div class="heading">\
-                                        <h4><b>{{c.user.username|title}} </b> &nbsp; •<span>{{c.date|timesince}} ago</span></h4>\
+                                        <h4><b>{{request.user.username|title}} </b> &nbsp; •<span>{% now "H:i" %} </span></h4>\
                                         <p> '+ _comment +' </p>\
                                         <div class="comment-like flex">\
                                             <div class="icon">\
@@ -325,10 +325,6 @@
                                             </div>\
                                             <div class="icon">\
                                                 <label for=""><a><small>Reply</small></a></label>\
-                                            </div>\
-                                            <div class="icon">\
-                                                <input type="hidden" value="{{ c.id }}" name="" id="">\
-                                                <label for=""><button data-cid={{c.id}} class="btn-del" style="color: red;"><small>Delete</small></button></label>\
                                             </div>\
                                         </div>\
                                     </div>\
