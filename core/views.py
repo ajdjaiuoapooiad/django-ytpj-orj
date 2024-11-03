@@ -33,6 +33,7 @@ def detail(req,pk):
         'video': video,
         'videos':videos,
         'comments': comments,
+        'channel': channel,
     }
     return render(req,'detail.html',context)
 
@@ -81,11 +82,11 @@ def add_new_sub(request,id):
     user=request.user
     
     if user in subscribers.subscibers.all():
-        subscribers.subscibers.remove(user)
+        subscribers.subscribers.remove(user)
         response = 'Subscribe'
         return JsonResponse(response,safe=False,status=200)
     else:
-        subscribers.subscibers.add(user)
+        subscribers.subscribers.add(user)
         response = 'Unsubscribe'
         return JsonResponse(response,safe=False,status=200)
     
