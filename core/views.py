@@ -75,7 +75,25 @@ def ajax_delete_comment(request):
         
     
     
+# Subscrive
+def add_new_sub(request,id):
+    subscribers=Channel.objects.get(id=id)
+    user=request.user
     
+    if user in subscribers.subscibers.all():
+        subscribers.subscibers.remove(user)
+        response = 'Subscribe'
+        return JsonResponse(response,safe=False,status=200)
+    else:
+        subscribers.subscibers.add(user)
+        response = 'Unsubscribe'
+        return JsonResponse(response,safe=False,status=200)
+    
+    
+def load_sub(request,id):
+    subscribers=Channel.objects.get(id=id)
+    sub_lists=list(subscribers.subscibers.value())
+    return JsonResponse(sub_lists,safe=False,status=200)
     
     
     

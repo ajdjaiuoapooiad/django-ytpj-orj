@@ -11,4 +11,10 @@ urlpatterns = [
     # Ajax
     path('ajax-save-comment/',views.ajax_save_comment,name='save-comment'),
     path('ajax-delete-comment/',views.ajax_delete_comment,name='delete-comment'),
+    
+    # Subscribe
+    path('add-sub/<int:id>/',views.add_new_sub,name='add_sub'),
+    path('load-sub/<int:id>/',views.load_sub,name='load_sub'),
+    
+    
 ]
