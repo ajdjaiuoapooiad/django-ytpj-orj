@@ -23,4 +23,7 @@ urlpatterns = [
     # Save-video
     path('add-save/<video_id>/',views.add_new_save,name='add_save'),
     
+    # Search 
+    path('video/search/',views.searchView,name='search'),
+    
 ]

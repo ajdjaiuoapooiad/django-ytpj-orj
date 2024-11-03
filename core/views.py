@@ -5,7 +5,7 @@ from django.shortcuts import render
 from channel.models import Channel
 from core.models import Comment, Video
 from django.views.decorators.csrf import csrf_exempt
-
+from django.db.models import Q
 
 
 def index(req):
@@ -132,7 +132,26 @@ def add_new_save(request,video_id):
         user.save_video.add(video)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
+
+
+# Search
+def searchView(request):
+    video=Video.objects.filter(visibility='public').order_by('-views')
+    query=request.GET.get('q')
+    
+    if query:
+        videos=video.filter(
+            Q(title_incontains=query)|
+            Q(description_incontains=query)
+        ).distinct()
         
+    context={
+        'videos': videos,
+        'query': query,
+    }
+    
+    return render(request,'search.html',context)
+
         
 
 
