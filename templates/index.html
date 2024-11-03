@@ -43,8 +43,10 @@
                     <div class="dropdown-content-background">
                         <div class="dropdown-contents">
                             <div class="dropdown-content">
-                                <i class="material-icons">videocam</i>
-                                <span>Create</span>
+                                <a href="{% url 'channel-profile' request.user.channel.id %}">
+                                    <i class="material-icons">account_circle</i>
+                                </a>
+                                <a href="{% url 'channel-profile' request.user.channel.id %}"><span>Channel</span></a>
                             </div>
 
                             <div class="dropdown-content">
@@ -53,7 +55,7 @@
                             </div>
 
                             <div class="dropdown-content">
-                                <i class="material-icons">person</i>
+                                <i class="material-icons">person_add</i>
                                 <span>Switch Account</span>
                             </div>
 
