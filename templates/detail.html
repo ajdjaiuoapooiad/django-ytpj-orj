@@ -57,7 +57,7 @@
                         <div class="flex">
                             <div class="icon">
                                 <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-up"></i></button>
-                                <label for=""><span id="like-count"></span></label>
+                                <label for=""><span id="like-count">{{video.likes.all.count}}</span></label>
                             </div>
 
                             <div class="icon">
@@ -422,6 +422,42 @@
     }
 
     window.onload=loadsub;
+
+</script>
+
+
+
+
+
+
+<!-- Likes           -------------------------->
+<script>
+    let likescounter = document.getElementById('like-count')
+    likes_button = document.getElementById('like_button')
+    likes_added = []
+
+    function addlike(){
+        axios
+        .get("{% url 'add_like' video.id %}")
+        .then(response =>{
+            this.response = response.data;
+            likes_button.innerHTML = this.response;
+            loadlike()
+            
+        })
+    }
+
+    function loadlike(){
+        axios
+        .get("{% url 'load_like' video.id %}")
+        .then(response =>{
+            this.response = response.data;
+            likes_added = this.response;
+            likescounter.innerHTML = likes_added.length
+        })
+    }
+
+    window.onload=loadlike();
 
 </script>
 
