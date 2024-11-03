@@ -94,7 +94,7 @@ def add_new_sub(request,id):
     
 def load_sub(request,id):
     subscribers=Video.objects.get(id=id)
-    sub_lists=list(subscribers.subscribers.value())
+    sub_lists=list(subscribers.subscribers.values())
     return JsonResponse(sub_lists,safe=False,status=200)
     
     
@@ -117,7 +117,7 @@ def add_new_like(request,id):
 
 def load_like(request,id):
     video=Video.objects.get(id=id)
-    like_lists=list(video.likes.value())
+    like_lists=list(video.likes.values())
     return JsonResponse(like_lists,safe=False,status=200)
  
 
