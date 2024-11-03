@@ -1,3 +1,4 @@
+from re import I
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 
@@ -97,5 +98,31 @@ def load_sub(request,id):
     return JsonResponse(sub_lists,safe=False,status=200)
     
     
+    
+# Likes
+def add_new_like(request,id):
+    video=Video.objects.get(id=id)
+    user=request.user
+    
+    if user in video.likes.all():
+        video.likes.remove(user)
+        like_response='<i class="fa fa-thumbs-up"></i>'
+        return JsonResponse(like_response,safe=False,status=200)
+    else:
+        video.likes.add(user)
+        like_response='<i class="fa fa-thumbs-up"></i>'
+        return JsonResponse(like_response,safe=False,status=200)
+
+
+
+def load_like(request,id):
+    video=Video.objects.get(id=id)
+    like_lists=list(video.likes.value())
+    return JsonResponse(like_lists,safe=False,status=200)
+ 
+
+
+
+
     
     

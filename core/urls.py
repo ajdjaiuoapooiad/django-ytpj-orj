@@ -16,5 +16,8 @@ urlpatterns = [
     path('add-sub/<int:id>/',views.add_new_sub,name='add_sub'),
     path('load-sub/<int:id>/',views.load_sub,name='load_sub'),
     
+    # Likes
+    path('add-like/<int:id>/',views.add_new_like,name='add_like'),
+    path('load-like/<int:id>/',views.load_like,name='load_like'),
     
 ]
