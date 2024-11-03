@@ -121,7 +121,19 @@ def load_like(request,id):
     return JsonResponse(like_lists,safe=False,status=200)
  
 
-
+# Save-video
+def add_new_save(request,video_id):
+    video=Video.objects.get(id=video_id)
+    user=request.user.profile
+    
+    if video in user.save_video.all():
+        user.save_video.remove(video)
+    else:
+        user.save_video.add(video)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        
+        
 
 
     
