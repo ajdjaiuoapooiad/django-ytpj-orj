@@ -28,7 +28,7 @@ class Channel(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(choices=STATUS,max_length=100,default='Active')
     user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True,related_name="channel")
-    subscibers=models.ManyToManyField(User,related_name="user_subs",blank=True)
+    subscribers=models.ManyToManyField(User,related_name="user_subs",blank=True)
     verified=models.BooleanField(default=False)
     
     total_view=models.PositiveIntegerField(default=0)
