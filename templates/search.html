@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 {% endblock style %}
 
+
+
+
 {% block content %}
 
 {% include 'partials/alert.html' %}
@@ -20,7 +23,7 @@
             
         <div class="video-container">
             <!-- Single Video Starts Here -->
-            {% for v in videos %}
+            {% for v in video %}
             <div class="video">
                 <div class="video-thumbnail">
                     {% if v.image %}

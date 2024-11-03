@@ -140,13 +140,13 @@ def searchView(request):
     query=request.GET.get('q')
     
     if query:
-        videos=video.filter(
-            Q(title_incontains=query)|
-            Q(description_incontains=query)
+        video=video.filter(
+            Q(title__icontains=query)|
+            Q(description__icontains=query)
         ).distinct()
         
     context={
-        'videos': videos,
+        'video': video,
         'query': query,
     }
     
