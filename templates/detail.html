@@ -56,18 +56,18 @@
 
                         <div class="flex">
                             <div class="icon">
-                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-up"></i></button>
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa-regular fa-thumbs-up"></i></button>
                                 <label for=""><span id="like-count">{{video.likes.all.count}}</span></label>
                             </div>
 
                             <div class="icon">
-                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-down"></i></button>
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa-regular fa-thumbs-down"></i></button>
                                 <label for=""><span id="like-count"></span></label>
                                 
                             </div>
 
                             <div class="icon">
-                                <a href=""><i class="fa fa-share"></i></a>
+                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
                                 <label for="">Share</label>
                             </div>
 
@@ -78,14 +78,14 @@
 
                             <div class="icon">
                                 <a href="">
-                                    <i class="fa fa-bookmark"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                     <label for="">Save</label>
                                 </a>
                             </div>
 
                             {% if video.user == request.user %}
                             <div class="icon">
-                                <a href="{% url 'video-edit' video.user.channel.id video.id %}"><i class="fa fa-pen"></i></a>
+                                <a href="{% url 'video-edit' video.user.channel.id video.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <label for="">Edit</label>
                             </div>
                             {% endif %}
