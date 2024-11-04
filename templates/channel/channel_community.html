@@ -48,6 +48,7 @@
 
 
                             
+                            {% if c.channel.user == request.user %}
                             <div class="dropdown">
                                 <button class="dropbtn"> 
                                     <i class="material-symbols-outlined">sort</i>
@@ -58,7 +59,7 @@
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
                                 </div>
                             </div>
-                     
+                            {% endif %}
 
 
                         </div>
