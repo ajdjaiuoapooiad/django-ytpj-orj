@@ -100,7 +100,7 @@
                         </div>
                     </div>
 
-    <!-- Channel        --------------------------->
+                <!-- Channel        --------------------------->
 
                     <div class="details flex border-bottom">
                         <div class="img">
@@ -133,7 +133,7 @@
 
 
 
-        <!-- Comment        ------------------------------------>
+                <!-- Comment        ------------------------------------>
 
 
 
@@ -150,7 +150,7 @@
 
                     <div class="details comment-self flex">
                         <div class="img">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">
+                            <img src="{{request.user.channel.image.url}}" alt="">
                         </div>
                         
 
@@ -160,7 +160,12 @@
 
 
 
-            <!-- comment form               ------------------------------------->
+
+
+
+
+
+                <!-- comment form               ------------------------------------->
 
                         {% if request.user.is_authenticated %}
                         <form action="" style="width: 100%;" id="comment_form">
@@ -185,10 +190,15 @@
 
 
 
+
+
+
+
+
                     </div>
 
 
-                        <!-- Comment form -->
+                <!-- Comment form -->
 
                     <div id="comment-wrapper">
 
@@ -199,7 +209,7 @@
                                 <div class="details flex">
         
                                     <div class="img">
-                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"  alt="">
+                                        <img  src="{{request.user.channel.image.url}}"  alt="">
                                     </div>
                                     <div class="heading">
                                         <h4><b>{{c.user.username|title}} </b> &nbsp; •<span>{{c.date|timesince}} ago</span></h4>
@@ -313,7 +323,7 @@
                 let _html='<div class="details-Comment">\
                                 <div class="details flex">\
                                     <div class="img">\
-                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="">\
+                                        <img  src="{{request.user.channel.image.url}}" alt="">\
                                     </div>\
                                     <div class="heading">\
                                         <h4><b>{{request.user.username|title}} </b> &nbsp; •<span>{% now "H:i" %} </span></h4>\
