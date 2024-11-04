@@ -73,7 +73,7 @@
                         </div>
                         <div class="icon-section">
                             <div class="single-icon">
-                                <a href=""><i class="material-icons material-symbols-outlined">thumb_up</i></a>
+                                <a href="{% url 'com_add_like' c.id %}"><i class="material-icons material-symbols-outlined">thumb_up</i></a>
                                 <span>{{c.likes.all.count}}</span>
                             </div>
     

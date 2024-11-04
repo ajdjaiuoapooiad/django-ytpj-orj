@@ -15,7 +15,8 @@ urlpatterns = [
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
     path("channel/<int:community_id>/create-comment/",views.create_comment,name='create-comment'),
     path("channel/<int:community_id>/<int:comment_id>/",views.delete_comment,name='delete-comment'),
-
+    # Likes
+    path('add-like/<community_id>/',views.add_new_like,name='com_add_like'),
 
     
     # video-upload

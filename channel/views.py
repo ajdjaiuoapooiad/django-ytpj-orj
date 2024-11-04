@@ -77,6 +77,7 @@ def channel_community_detail(request,channel_name,community_id):
  
 
 
+# Create-post
 @login_required
 def create_community_post(request,channel_id):
     user=request.user
@@ -103,6 +104,7 @@ def create_community_post(request,channel_id):
     return render(request,'channel/create-post.html',context)
  
  
+#  Create-Comment
 @login_required
 def create_comment(request,community_id):
     
@@ -127,6 +129,23 @@ def delete_comment(request,community_id,comment_id):
     return redirect('channel-community-detail',community.channel.id,community.id)
  
   
+# Likes
+@login_required
+def add_new_like(request,community_id):
+    community=Community.objects.get(id=community_id)
+    user=request.user
+    
+    if user in community.likes.all():
+        community.likes.remove(user)
+    else:
+        community.likes.add(user)
+        
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+    
+
+
+
+
     
 def channel_about(request,channel_name):
     channel=get_object_or_404(Channel,id=channel_name)
