@@ -164,6 +164,7 @@ def tagView(request,tag_slug=None):
         tag=get_object_or_404(Tag,slug=tag_slug)
         videos=video.filter(tags__in=[tag])
     
+    
     context={
         'tag': tag,
         'videos': videos,
