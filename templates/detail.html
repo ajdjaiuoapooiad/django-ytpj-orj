@@ -280,12 +280,12 @@
                     {% for v in videos %}
                     <div class="video-items video-sidebar flex">
                             
-                        <a href="">
+                        <a href="{% url 'video-detail' v.id  %}">
                             <img src="{{v.image.url}}" alt="">
                         </a>
                         
                         <div class="details">
-                            <p>{{v.title}}</p>
+                            <a href="{% url 'video-detail' v.id  %}"><p>{{v.title}}</p></a>
                             <span>{{v.user.channel.channel_name}} {% if v.user.channel.verified == True %} <i class="fa fa-check-circle"></i> {% endif %} </span><br>
                             <span><small>{{v.views}} Views . {{v.date|timesince}} ago</small> </span>
                         </div>
@@ -298,6 +298,17 @@
         </section>
     </main>
     
+
+
+
+
+
+
+
+
+
+
+
 
 
 
