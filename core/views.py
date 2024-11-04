@@ -1,11 +1,12 @@
 from re import I
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from channel.models import Channel
 from core.models import Comment, Video
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from taggit.models import Tag
 
 
 def index(req):
@@ -152,7 +153,23 @@ def searchView(request):
     
     return render(request,'search.html',context)
 
-        
+  
+  
+  
+def tagView(request,tag_slug=None):
+    video=Video.objects.filter(visibility='public').order_by('-views')
+    tag=None
+    
+    if tag_slug:
+        tag=get_object_or_404(Tag,slug=tag_slug)
+        videos=video.filter(tags__in=[tag])
+    
+    context={
+        'tag': tag,
+        'videos': videos,
+    }
+    
+    return render(request,'tags.html',context)        
 
 
     

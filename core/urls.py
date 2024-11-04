@@ -26,4 +26,7 @@ urlpatterns = [
     # Search 
     path('video/search/',views.searchView,name='search'),
     
+    # Tag
+    path('video/tags/<slug:tag_slug>/',views.tagView,name='video-tag'),
+    
 ]
