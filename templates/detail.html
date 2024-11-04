@@ -45,7 +45,7 @@
                             
                             {% for tag in video.tags.all %}
                             <a id="channel-tag" href="{% url 'video-tag' tag.slug %}">
-                                #{{tag.name}}
+                                #{{tag.name}}　
                             </a>
                             {% endfor %}
                         </label>
