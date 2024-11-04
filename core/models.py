@@ -20,13 +20,13 @@ VISIBILITY=(
 
 
 
-def user_derectory_path(instance,filename):
+def user_directory_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
 
 
 class Video(models.Model):
-    video=models.FileField(upload_to=user_derectory_path)
-    image=models.ImageField(upload_to=user_derectory_path,null=True,blank=True)
+    video=models.FileField(upload_to=user_directory_path)
+    image=models.ImageField(upload_to=user_directory_path,null=True,blank=True)
     title=models.CharField(max_length=100)
     description=models.TextField(max_length=2000,null=True,blank=True)
     tags=TaggableManager(blank=True)
