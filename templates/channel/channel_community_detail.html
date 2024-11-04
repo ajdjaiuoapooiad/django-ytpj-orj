@@ -80,12 +80,12 @@
                         </div>
                         <div class="icon-section">
                             <div class="single-icon">
-                                <a href=""><i class="material-icons material-symbols-outlined">thumb_up</i></a>
+                                <a href="{% url 'com_add_like' community.id %}"><i class="material-icons material-symbols-outlined">thumb_up</i></a>
                                 <span>{{ community.likes.all.count }}</span>
                             </div>
     
                             <div class="single-icon">
-                                <a href=""><i class="material-icons material-symbols-outlined">thumb_down</i></a>
+                                <a href="{% url 'com_add_like' community.id %}"><i class="material-icons material-symbols-outlined">thumb_down</i></a>
     
                             </div>
     
