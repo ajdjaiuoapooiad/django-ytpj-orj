@@ -139,7 +139,7 @@
                             <div class="comment-wrap">
                                 <div class="comments">
                                     <div class="comment-img">
-                                        <img src="{{c.user.channel.image.url}}" alt="">
+                                        <a href="{% url 'channel-profile' c.user.channel.id %}"><img src="{{c.user.channel.image.url}}" alt=""></a>
                                     </div>
                                     <div class="comment-content">
                                         <div class="comment-header">
