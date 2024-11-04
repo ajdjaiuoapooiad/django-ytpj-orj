@@ -46,7 +46,8 @@ def loginView(request):
         try:
             user=User.request.get('email')
         except:
-            messages.warning(request,'user does not exist')
+            user=None
+            # messages.warning(request,'user does not exist')
             
         user=authenticate(request,email=email,password=password)
         
@@ -64,5 +65,5 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     messages.success(request,'You are logged out')
-    return render(request,'userauths/login.html')
+    return redirect('sign-in')
 
