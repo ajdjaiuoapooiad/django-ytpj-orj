@@ -26,7 +26,7 @@
            {% if video_featured != None %}
            <div class="channel-intro-video">
                <div class="intro-video">
-                   <img src="{{video_featured.image.url}}" alt="">
+                   <a href="{% url 'video-detail' video_featured.id %}"><img src="{{video_featured.image.url}}" alt=""></a>
                </div>
                <div class="intro-contents">
                    <h3>{{video_featured.title|truncatechars:100}}</h3>
@@ -55,7 +55,7 @@
                <div class="video">
                    <div class="video-thumbnail">
                        {% if v.image %}
-                       <a href=""><img src="{{v.image.url}}" alt=""></a>
+                       <a href="{% url 'video-detail' v.id %}"><img src="{{v.image.url}}" alt=""></a>
                        {% else %}
                        <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrf0lpB42PwkxZCIvkgPjzFbA4SMYVhjyVLDdrC5_OLJEAI4GCqBfknjVqIeqQXvHuX9A&usqp=CAU" alt=""></a>
                        {% endif %}
@@ -63,7 +63,7 @@
                    <div class="video-details">
                        <div class="author">
                            {% if v.user.channel.image %}
-                           <a href=""><img src="{{ v.user.channel.image.url }}" alt=""></a>
+                           <a href="{% url 'channel-profile' v.user.channel.id %}"><img src="{{ v.user.channel.image.url }}" alt=""></a>
                            {% else %}
                            <a href=""><img src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png?w=360" alt=""></a>
                            {% endif %}
