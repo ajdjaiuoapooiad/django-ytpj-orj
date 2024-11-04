@@ -28,7 +28,7 @@
             
             {% if channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %} <br>
           
-            <span id="count"></span><span> subscribers</span>
+            <span id="count">{{channel.subscribers.all.count}}</span><span> subscribers</span>
         </div>
     </div>
     <div class="channel-header-btns">
@@ -52,5 +52,16 @@
     <a href="" class="dont-display-this"><i class="material-icons">search</i></a>
 </div>
 <hr>
+
+
+
+
+<!-- Axios   ----------------------------->
+{% include 'channel/partials/subscribe-axios.html' %}
+
+
+
+
+
 
 
