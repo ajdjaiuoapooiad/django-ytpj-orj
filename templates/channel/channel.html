@@ -26,9 +26,7 @@
            {% if video_featured != None %}
            <div class="channel-intro-video">
                <div class="intro-video">
-                   <video controls>
-                       <source src="{{video_featured.video.url}}" type="video/mp4">
-                   </video>
+                   <img src="{{video_featured.image.url}}" alt="">
                </div>
                <div class="intro-contents">
                    <h3>{{video_featured.title|truncatechars:100}}</h3>

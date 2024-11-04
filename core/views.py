@@ -9,7 +9,7 @@ from django.db.models import Q
 
 
 def index(req):
-    videos = Video.objects.filter(visibility='public')
+    videos = Video.objects.filter(visibility='public').order_by('-views')
     
     context = {
         'videos': videos,

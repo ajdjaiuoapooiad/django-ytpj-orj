@@ -19,7 +19,7 @@ def channel_profile(request,channel_name):
         video_featured=Video.objects.get(featured=True,user=channel.user.id)
     except:
         video_featured = None
-        messages.warning(request,f'Only one video can featured!')
+        # messages.warning(request,f'Only one video can featured!')
     
     context={
         'channel': channel,
