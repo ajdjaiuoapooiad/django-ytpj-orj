@@ -1,0 +1,57 @@
+
+/* Sort Dropdown */
+.dropdown {
+float: left;
+overflow: hidden;
+}
+
+.dropdown .dropbtn {
+font-size: 16px;  
+border: none;
+outline: none;
+color: black;
+padding: 14px 16px;
+background-color: inherit;
+font-family: inherit;
+margin: 0;
+}
+
+
+.dropdown-content {
+display: none;
+position: absolute;
+top: 250px;
+color: black;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+transition: 0.5s;
+background-color: white;
+border-radius: 10px;
+}
+
+.dropdown-content a {
+float: none;
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+.dropdown-content i {
+color: black;
+margin-top: 4px;
+
+}
+
+.dropdown-content a:hover {
+border-radius: 10px;
+transition: 0.5s;
+background-color: rgba(221, 221, 221, 0.349);
+/* color: black; */
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+color: black;
+}

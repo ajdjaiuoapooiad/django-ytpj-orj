@@ -1,31 +1,31 @@
-
-<!-- Subscribe           -------------------------->
 <script>
     let subcounter = document.getElementById('count')
     sub_button = document.getElementById('sub_btn')
     subscriber_added = []
-
+    
     function addsub(){
         axios
-        .get("{% url 'add_sub' channel.user.id %}")
+        .get('{% url "add_sub" channel.user.pk %}')
         .then(response =>{
-            this.response = response.data;
-            sub_button.innerHTML = this.response;
-            loadsub()
-            sub_button.classList.toggle('unsubscribe-btn')
+                this.response = response.data;
+                sub_button.innerHTML =  this.response;
+                loadsub()
+                // sub_button.classList.remove('loading')
+                sub_button.classList.toggle("unsubscribe-btn")
         })
     }
-
+    
     function loadsub(){
         axios
-        .get("{% url 'load_sub' channel.pk %}")
+        .get('{% url "load_sub" channel.user.pk %}')
         .then(response =>{
-            this.response = response.data;
-            subscriber_added = this.response;
-            subcounter.innerHTML = subscriber_added.length
+                this.response = response.data;
+                subscriber_added = this.response
+                subcounter.innerHTML = subscriber_added.length
+
+    
         })
     }
-
-    window.onload=loadsub;
-
+    
+    window.onload = loadsub;
 </script>
