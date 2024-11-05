@@ -29,4 +29,9 @@ urlpatterns = [
     # Tag
     path('video/tags/<slug:tag_slug>/',views.tagView,name='video-tag'),
     
+    
+    # Mysaved-video
+    path('save-video/<profile_id>/',views.save_video,name='save-video'),
+    
+    
 ]

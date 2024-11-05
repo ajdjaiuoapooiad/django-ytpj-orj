@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from taggit.models import Tag
 
+from userauths.models import Profile
+
 
 def index(req):
     videos = Video.objects.filter(visibility='public').order_by('-views')
@@ -173,5 +175,13 @@ def tagView(request,tag_slug=None):
     return render(request,'tags.html',context)        
 
 
+def save_video(request,profile_id):
+    user=request.user
+    profile=Profile.objects.get(id=profile_id)
+    videos=Video.objects.filter(title=profile.save_video)
     
+    context={
+        'videos': videos,
+    }
     
+    return render(request,'saved_video.html',context)

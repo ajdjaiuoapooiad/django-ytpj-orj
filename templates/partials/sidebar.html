@@ -21,7 +21,7 @@
 
         <div class="sidebar-category">
             <i class="material-icons">library_add_check</i>
-            <span>Library</span>
+            <a href="{% url 'save-video' request.user.profile.id %}"><span>Library</span></a>
         </div>
 
         <div class="sidebar-category">
