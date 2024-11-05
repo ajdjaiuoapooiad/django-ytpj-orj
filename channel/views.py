@@ -110,7 +110,7 @@ def edit_community_post(request,channel_id,community_post_id):
      
      
     if request.method == 'POST':
-        form=CommunityCreateForm(request.POST,request.FILES)
+        form=CommunityCreateForm(request.POST,request.FILES,instance=community)
         
         if form.is_valid():
             new_form=form.save(commit=False)
@@ -119,7 +119,7 @@ def edit_community_post(request,channel_id,community_post_id):
             messages.success(request,'Community editted successfully!')
             return redirect('channel-community',channel.id)
     else:
-        form=CommunityCreateForm()
+        form=CommunityCreateForm(instance=community)
         
     context={
         'form': form,
