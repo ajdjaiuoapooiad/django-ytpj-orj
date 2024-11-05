@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/channel-community.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/channel.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/dropdown.css' %}" type="text/css">
+
 
 
 <style>
@@ -49,11 +51,11 @@
 
                             
                             {% if c.channel.user == request.user %}
-                            <div class="">
+                            <div class="dropdown">
                                 <button class="dropbtn"> 
                                     <i class="material-symbols-outlined">sort</i>
                                 </button>
-                                <div class="">
+                                <div class="dropdown-content">
                                     <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
                                     <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
