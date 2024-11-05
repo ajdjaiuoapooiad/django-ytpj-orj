@@ -5,13 +5,10 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/channel-community.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/channel.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/dropdown.css' %}" type="text/css">
+
 
 
 <style>
-a{
-    color: black;
-}
 .message-alert{
     background-color: rgb(169, 255, 166);
     padding: 14px;
@@ -19,63 +16,91 @@ a{
     border-radius: 10px;
     border: 1px solid rgb(13, 161, 0);
 }
-    
-/* Sort Dropdown */
+
+/* Style The Dropdown Button */
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
 .dropdown {
-float: left;
-overflow: hidden;
+  position: relative;
+  display: inline-block;
 }
 
-.dropdown .dropbtn {
-font-size: 16px;  
-border: none;
-outline: none;
-color: black;
-padding: 14px 16px;
-background-color: inherit;
-font-family: inherit;
-margin: 0;
-}
-
-
+/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-display: none;
-position: absolute;
-top: 250px;
-color: black;
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
-transition: 0.5s;
-background-color: white;
-border-radius: 10px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
+/* Links inside the dropdown */
 .dropdown-content a {
-float: none;
-color: black;
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-text-align: left;
-}
-.dropdown-content i {
-color: black;
-margin-top: 4px;
-
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown-content a:hover {
-border-radius: 10px;
-transition: 0.5s;
-background-color: rgba(221, 221, 221, 0.349);
-/* color: black; */
-}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
 
+/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-display: block;
-color: black;
+  display: block;
 }
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+/* Style The Dropdown Button */
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 
 </style>
 
@@ -121,17 +146,22 @@ color: black;
 
 
 
-
+                            {% if community.channel.user == request.user %}
                             <div class="dropdown">
-                                <button class="dropbtn"> 
+                                <button class="dropbtn">
                                     <i class="material-symbols-outlined">sort</i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="{% url 'edit-post' community.channel.id community.id %}"> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
-                                    <a href="{% url 'delete-post' community.channel.id community.id %}"> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
+                                    <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
+                                    <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
                                 </div>
-                                </div>
+                              </div>
+                            {% endif %}
+                            
+
+
+                            
                             
                         </div>
                         <div class="content">
@@ -241,6 +271,6 @@ color: black;
     </div>
 
     
-{% include 'channel/partials/subscribe-axios.html' %}
+
 
 {% endblock content %}
