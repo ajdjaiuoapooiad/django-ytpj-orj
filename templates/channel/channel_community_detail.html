@@ -50,7 +50,7 @@
                         <div class="header-comm">
                             <div class="channel-details">
                                 {% if community.channel.image %}
-                                <img src="{% static '{{community.channel.image.url}}' %}" class="channel-img-com" alt="">
+                                <img src="{{community.channel.image.url}}" class="channel-img-com" alt="">
                                 {% else %}
                                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" class="channel-img-com" alt="">
                                 {% endif %}
@@ -75,7 +75,7 @@
                         <div class="content">
                             <h3>{{ community.content }}</h3>
                             {% if community.image %}
-                            <img src="{% static '{{community.image.url}}' %}" alt="">
+                            <img src="{{community.image.url}}" alt="">
                             {% endif %}
                         </div>
                         <div class="icon-section">
