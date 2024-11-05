@@ -128,7 +128,19 @@ def edit_community_post(request,channel_id,community_post_id):
             
     return render(request,'channel/create-post.html',context)
                     
+
+
+
+
+def delete_community_post(request,channel_id,community_post_id):
+    community=Community.objects.get(id=community_post_id)   #ここを変更したい
+    user=request.user
+    channel=Channel.objects.get(id=channel_id)
      
+    community.delete()
+    messages.success(request,f'Community deleted successfully!')
+    return redirect('channel-community',channel.id)
+    
  
  
  

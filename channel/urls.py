@@ -14,6 +14,7 @@ urlpatterns = [
     # Create post
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
     path("channel/edit-community-post/<channel_id>/<community_post_id>/",views.edit_community_post,name='edit-post'),
+    path("channel/delete-community-post/<channel_id>/<community_post_id>/",views.delete_community_post,name='delete-post'),
 
 
     
