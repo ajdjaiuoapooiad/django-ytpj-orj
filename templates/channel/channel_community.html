@@ -34,7 +34,7 @@
                         <div class="header-comm">
                             <div class="channel-details">
                                 {% if c.channel.image %}
-                                <img src="{{c.channel.image.url}}" class="channel-img-com" alt="">
+                                <img src="{% static '{{c.channel.image.url}}' %}" class="channel-img-com" alt="">
                                 {% else %}
                                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" class="channel-img-com" alt="">
                                 {% endif %}
@@ -49,11 +49,11 @@
 
                             
                             {% if c.channel.user == request.user %}
-                            <div class="dropdown">
+                            <div class="">
                                 <button class="dropbtn"> 
                                     <i class="material-symbols-outlined">sort</i>
                                 </button>
-                                <div class="dropdown-content">
+                                <div class="">
                                     <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
                                     <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
@@ -67,7 +67,7 @@
                             <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><h3>{{ c.content|truncatechars:200 }}</h3></a>
                             
                             {% if c.image %}
-                            <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><img src="{{c.image.url}}" alt=""></a>
+                            <a href="{% url 'channel-community-detail' c.channel.id c.id %}"><img src="{% static '{{c.image.url}}' %}" alt=""></a>
                             {% endif %}
 
 

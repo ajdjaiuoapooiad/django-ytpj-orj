@@ -13,6 +13,15 @@ urlpatterns = [
     
     # Create post
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
+    path("channel/edit-community-post/<channel_id>/<community_post_id>/",views.edit_community_post,name='edit-post'),
+
+
+    
+    
+    
+    
+    
+    # Comment
     path("channel/<int:community_id>/create-comment/",views.create_comment,name='create-comment'),
     path("channel/<int:community_id>/<int:comment_id>/",views.delete_comment,name='delete-comment'),
     # Likes

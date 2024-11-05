@@ -50,7 +50,7 @@
                         <div class="header-comm">
                             <div class="channel-details">
                                 {% if community.channel.image %}
-                                <img src="{{community.channel.image.url}}" class="channel-img-com" alt="">
+                                <img src="{% static '{{community.channel.image.url}}' %}" class="channel-img-com" alt="">
                                 {% else %}
                                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" class="channel-img-com" alt="">
                                 {% endif %}
@@ -60,22 +60,22 @@
                             <!-- <div class="elipse-icon">
                                 <i class="material-symbols-outlined">sort</i>
                             </div> -->
-                            <div class="dropdown">
+                            <div class="">
                                 <button class="dropbtn"> 
                                     <i class="material-symbols-outlined">sort</i>
                                 </button>
-                                <div class="dropdown-content">
-                                    <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
+                                <div class="">
+                                    <a href="{% url 'edit-post' community.channel.id community.id %}"> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
                                     <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
                                     <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
                                 </div>
-                            </div>
+                                </div>
                             
                         </div>
                         <div class="content">
                             <h3>{{ community.content }}</h3>
                             {% if community.image %}
-                            <img src="{{community.image.url}}" alt="">
+                            <img src="{% static '{{community.image.url}}' %}" alt="">
                             {% endif %}
                         </div>
                         <div class="icon-section">
@@ -108,15 +108,14 @@
                             <!-- Create Comment Section -->
                             <div class="create-comment">
                                 <div class="create-comment-img">
-                                    <img src="{{request.user.channel.image.url}}" alt="">
+                                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" alt="">
                                 </div>
 
 
 
 
 
-
-                            <!-- Comment Form           ------------------------------>
+                                <!-- Comment Form -->
                                 <form action="{% url 'create-comment' community.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="create-comment-input">
@@ -130,7 +129,7 @@
 
 
 
-
+                                
 
                             </div>
     
@@ -139,7 +138,7 @@
                             <div class="comment-wrap">
                                 <div class="comments">
                                     <div class="comment-img">
-                                        <a href="{% url 'channel-profile' c.user.channel.id %}"><img src="{{c.user.channel.image.url}}" alt=""></a>
+                                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg" alt="">
                                     </div>
                                     <div class="comment-content">
                                         <div class="comment-header">
@@ -161,17 +160,9 @@
                                         </div> -->
                                     </div>
                                 </div>
-
-
-
-                                
-                                {% if c.user == request.user %}
                                 <div class="delete-comment">
-                                    <a href="{% url 'delete-comment' community.id c.id %}"><i class="material-icons">delete</i></a>
+                                    <a href=""><i class="material-icons">delete</i></a>
                                 </div>
-                                {% endif %}
-
-
                             </div>
                             {% endfor %}
                         </div>
@@ -183,13 +174,6 @@
     </div>
 
     
-
- 
-    
-    
-
-    
-    
-
+{% include 'channel/partials/subscribe-axios.html' %}
 
 {% endblock %}

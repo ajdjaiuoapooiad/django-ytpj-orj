@@ -51,7 +51,7 @@ def channel_community(request,channel_name):
     
     context={
         'channel': channel,
-        'community':community,
+        'community': community,
     }
     return render(request,'channel/channel_community.html',context)
 
@@ -90,7 +90,6 @@ def create_community_post(request,channel_id):
             new_form=form.save(commit=False)
             new_form.channel=channel
             new_form.save()
-            post_id=new_form.id
             messages.success(request,'Community created successfully!')
             return redirect('channel-community',channel.id)
     else:
@@ -102,6 +101,41 @@ def create_community_post(request,channel_id):
             
             
     return render(request,'channel/create-post.html',context)
+ 
+ 
+def edit_community_post(request,channel_id,community_post_id):
+    community=Community.objects.get(id=community_post_id)
+    user=request.user
+    channel=Channel.objects.get(id=channel_id)
+     
+     
+    if request.method == 'POST':
+        form=CommunityCreateForm(request.POST,request.FILES)
+        
+        if form.is_valid():
+            new_form=form.save(commit=False)
+            new_form.channel=channel
+            new_form.save()
+            messages.success(request,'Community editted successfully!')
+            return redirect('channel-community',channel.id)
+    else:
+        form=CommunityCreateForm()
+        
+    context={
+        'form': form,
+    }
+            
+            
+    return render(request,'channel/create-post.html',context)
+                    
+     
+ 
+ 
+ 
+ 
+
+ 
+ 
  
  
 #  Create-Comment
