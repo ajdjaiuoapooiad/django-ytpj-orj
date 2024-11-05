@@ -104,7 +104,7 @@ def create_community_post(request,channel_id):
  
  
 def edit_community_post(request,channel_id,community_post_id):
-    community=Community.objects.get(id=community_post_id)
+    community=Community.objects.get(id=community_post_id)   #ここを変更したい
     user=request.user
     channel=Channel.objects.get(id=channel_id)
      
