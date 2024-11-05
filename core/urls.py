@@ -30,8 +30,9 @@ urlpatterns = [
     path('video/tags/<slug:tag_slug>/',views.tagView,name='video-tag'),
     
     
-    # Mysaved-video
+    # saved-video
     path('save-video/<profile_id>/',views.save_video,name='save-video'),
+    path('like-video/',views.like_video,name='like-video'),
     
     
 ]

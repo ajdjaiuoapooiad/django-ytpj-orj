@@ -185,3 +185,14 @@ def save_video(request,profile_id):
     }
     
     return render(request,'saved_video.html',context)
+
+
+def like_video(request):
+    user=request.user
+    videos=Video.objects.filter(likes=user)
+    
+    context={
+        'videos': videos,
+    }
+    
+    return render(request,'saved_video.html',context)
