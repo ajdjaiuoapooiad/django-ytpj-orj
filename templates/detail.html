@@ -9,11 +9,8 @@
     .fa{
         color: black;
     }
-    a{
-        color: black;
-    }
-    #channel-tag{
-        color: blue;
+    a { color: black; 
+        text-decoration:none; 
     }
     .unsubscribe-btn{
         background-color: gray;
@@ -45,9 +42,10 @@
                             
                             {% for tag in video.tags.all %}
                             <a id="channel-tag" href="{% url 'video-tag' tag.slug %}">
-                                #{{tag.name}}　
+                                <label for="" class="tags-bg">#{{tag.name}}　</label>
                             </a>
                             {% endfor %}
+
                         </label>
 
                         <p>{{video.title}}</p>
