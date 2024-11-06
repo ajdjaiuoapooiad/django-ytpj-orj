@@ -8,7 +8,59 @@
     <title>Youtube</title>
     <link rel="icon" href="{% static 'images/youtube-icon.png' %}">
     
+
+
+    <style>   
+        /* Style The Dropdown Button */
+        .dropbtn1 {
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+        
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown1 {
+          position: relative;
+          display: inline-block;
+        }
+        
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content1 {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          right: 0;
+        }
+        
+        /* Links inside the dropdown */
+        .dropdown-content1 a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        /* Change color of dropdown links on hover */
+        .dropdown-content1 a:hover {background-color: #f1f1f1}
+        
+        /* Show the dropdown menu on hover */
+        .dropdown1:hover .dropdown-content1 {
+          display: block;
+        }
+        
+        
+        
+        
+    </style>
+
+
     {% block style %}
+    
 
     {% endblock style %}
 
@@ -52,11 +104,18 @@
             
             <a href="{% url 'edit-channel' request.user.channel.id %}"><i class="material-icons display-this">notifications</i>
 </a>
-            {% if request.user.is_authenticated %}
-            <a href="{% url 'channel-profile' request.user.channel.id %}"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
-            {% else %}
-            <a href="#"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
-            {% endif %}
+
+            <div class="dropdown1">
+                <button class="dropbtn1">
+                    <i id="drop-down1" class="material-icons display-this">account_circle</i>
+                </button>
+                <div class="dropdown-content1">
+                    <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
+                    <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
+                    <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
+                </div>
+              </div>
+
 
         </div>
 
