@@ -178,7 +178,7 @@ def tagView(request,tag_slug=None):
 def save_video(request):
     user=request.user
     profile=Profile.objects.get(user=user)
-    videos=Video.objects.filter(title__in=profile.save_video)
+    videos=Video.objects.filter(title=profile.save_video)
     
     context={
         'videos': videos,
