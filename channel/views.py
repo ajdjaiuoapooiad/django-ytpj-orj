@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 
-from channel.forms import CommunityCreateForm, VideoCreateForm
+from channel.forms import ChannelEditForm, CommunityCreateForm, VideoCreateForm
 from channel.models import Channel, Community, CommunityComment
 from core.models import  Video
 from django.contrib.auth.decorators import login_required
@@ -275,3 +275,32 @@ def video_delete(request,video_id):
         return redirect('index')
     else:
         return HttpResponse('You are not allowed to delete this video')
+
+
+
+
+def edit_channel(request,channel_id):
+    user=request.user
+    channel=Channel.objects.get(id=channel_id)
+    
+    if request.method == 'POST':
+        form=ChannelEditForm(request.POST,request.FILES,instance=channel)
+        
+        if form.is_valid():
+            new_form=form.save(commit=False)
+            new_form.channel=channel
+            new_form.save()
+            messages.success(request,'Community editted successfully!')
+            return redirect('channel-profile',channel.id)
+    else:
+        form=ChannelEditForm(instance=channel)
+        
+    context={
+        'form': form,
+    }
+            
+            
+    return render(request,'channel/channe_edit.html',context)
+
+
+

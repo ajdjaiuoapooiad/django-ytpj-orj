@@ -15,9 +15,6 @@ urlpatterns = [
     path("channel/create-community-post/<channel_id>/",views.create_community_post,name='create-post'),
     path("channel/edit-community-post/<channel_id>/<community_post_id>/",views.edit_community_post,name='edit-post'),
     path("channel/delete-community-post/<channel_id>/<community_post_id>/",views.delete_community_post,name='delete-post'),
-
-
-    
     
     
     
@@ -34,4 +31,6 @@ urlpatterns = [
     path('channel/edit-video/<channel_id>/<video_id>/',views.video_edit,name='video-edit'),
     path('channel/delete-video/<video_id>/',views.video_delete,name='video-delete'),
     
+    
+    path('edit-channel/<channel_id>/',views.edit_channel,name='edit-channel')
 ]
