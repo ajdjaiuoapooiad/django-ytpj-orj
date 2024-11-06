@@ -38,8 +38,17 @@ class ChannelEditForm(forms.ModelForm):
     class Meta:
         model=Channel
         fields=[
+            'channel_art',
+            'image',
             'full_name',
             'channel_name',
+            'description',
+            'keyword',
+            'business_email',
+            'make_business_email_public',
+            'business_location',
+            'make_business_location_public',
+            
         ]
 
 

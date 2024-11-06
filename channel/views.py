@@ -297,6 +297,7 @@ def edit_channel(request,channel_id):
         
     context={
         'form': form,
+        'channel':channel,
     }
             
             

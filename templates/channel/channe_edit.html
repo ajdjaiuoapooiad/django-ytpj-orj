@@ -30,22 +30,88 @@
             
             <div class="upload-content">
                 <div class="left-video">
-                    <h4>Details</h4>
+                    <h4>Profile Edit</h4>
                     <div class="error">
                         <strong>{{ form.errors }}</strong>
                     </div>
+
+
+                    <div class="video-div file-input" id="file-input">
+                        <small>Channel_art (required) </small> <br>
+                        {{form.channel_art}}
+                        <!-- <input type="file" class="file"> -->
+                        <!-- <input type='file'> -->
+                        <span class='button'><i class="material-icons">image</i></span>
+                        <span class='label' data-js-label>No image selected</label> <br>
+                        <img src="{{ channel.channel_art.url }}" style="width: 100%;" alt="">
+                        
+                    </div>
+                    <br>
+
+                    <div class="video-div file-input" id="file-input">
+                        <small>Image (required) </small> <br>
+                        {{form.image}}
+                        <!-- <input type="file" class="file"> -->
+                        <!-- <input type='file'> -->
+                        <span class='button'><i class="material-icons">image</i></span>
+                        <span class='label' data-js-label>No image selected</label> <br>
+                        <img src="{{ channel.image.url }}" style="width: 100%;" alt="">
+                        
+                    </div>
+
                     
                     <div class="desc-div">
-                        <span>Description (required) <span id="desc-count"></span> </span> <br>
+                        <span>Full_name (required) <span id="desc-count"></span> </span> <br>
                         <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
                         {{form.full_name}}
                     </div>
 
                     <div class="desc-div">
-                        <span>Description (required) <span id="desc-count"></span> </span> <br>
+                        <span>Channel_name (required) <span id="desc-count"></span> </span> <br>
                         <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
                         {{form.channel_name}}
                     </div>
+
+                    <div class="desc-div">
+                        <span>Description (required) <span id="desc-count"></span> </span> <br>
+                        <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
+                        {{form.description}}
+                    </div>
+
+                    <div class="desc-div">
+                        <span>Business_email (required) <span id="desc-count"></span> </span> <br>
+                        <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
+                        {{form.business_email}}
+                    </div>
+
+                    <div class="desc-div">
+                        <span>Make_business_email_public (required) <span id="desc-count"></span> </span> <br>
+                        <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
+                        {{form.make_business_email_public}}
+                    </div>
+
+                    <div class="desc-div">
+                        <span>Business_location (required) <span id="desc-count"></span> </span> <br>
+                        <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
+                        {{form.business_location}}
+                    </div>
+
+                    <div class="desc-div">
+                        <span>Make_business_location_public (required) <span id="desc-count"></span> </span> <br>
+                        <!-- <textarea name="" id="description" onkeyup="desc_validate()"></textarea> -->
+                        {{form.make_business_location_public}}
+                    </div>
+
+
+
+                    <div class="tags-div">
+                        <span>Keyword (optional) </span> <br>
+                        <!-- <input type="text" > -->
+                        {{form.keyword}}
+                        <p>Seperate Keywords with Comma</p>
+                    </div>
+
+
                     
              
                     
