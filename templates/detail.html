@@ -59,7 +59,13 @@
 
                         <div class="flex">
                             <div class="icon">
-                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa-regular fa-thumbs-up"></i></button>
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()">
+                                    {% if request.user in video.likes.all %}
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    {% endif %}
+                                </button>
                                 <label for=""><span id="like-count">{{video.likes.all.count}}</span></label>
                             </div>
 

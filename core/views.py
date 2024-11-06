@@ -21,7 +21,7 @@ def index(request):
 
 
 
-def detail(req,pk):
+def detail(request,pk):
     video = Video.objects.get(id=pk)
     videos = Video.objects.filter(visibility='public').order_by('-views')
     comments=Comment.objects.filter(video=video,active=True).order_by('-date')
@@ -39,13 +39,13 @@ def detail(req,pk):
         'comments': comments,
         'channel': channel,
     }
-    return render(req,'detail.html',context)
+    return render(request,'detail.html',context)
 
-def create(req):
-    return render(req,'create.html')
+def create(request):
+    return render(request,'create.html')
 
-def update(req):
-    return render(req,'update.html')
+def update(request):
+    return render(request,'update.html')
 
 
 
