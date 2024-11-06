@@ -37,8 +37,15 @@
                 <div class="drop-down-container">
 
                     
+                    {% if request.path == '/like-video/' %}
+                    <h1 style="font-size: 20px;">Liked videos👍</h1>
+                    {% endif %}
 
-                    <h1 style="font-size: 20px;">Recommends</h1>
+                    {% if request.path == '/save-video/' %}
+                    <h1 style="font-size: 20px;">Saved videos📚</h1>
+                    {% endif %}
+
+
 
                     <!-- dropdown-content           ------------------------>
                     <div class="dropdown-content-background">
