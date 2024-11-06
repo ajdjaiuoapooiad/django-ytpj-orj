@@ -79,20 +79,8 @@ def ajax_delete_comment(request):
         return JsonResponse({'status':2})
         
 
-def reply_save_comment(request):
-    if request.method == 'POST':
-        pk=request.POST.get('id')
-        
-        comment=request.POST.get('comment')
-        video=Video.objects.get(id=pk)
-        user=request.user
-        
-        new_comment=Comment.objects.create(comment=comment,user=user,video=video)
-        new_comment.save()
-        
-        response='Comment posted successfully!'
-        return HttpResponse(response)
-    
+
+ 
     
 # Subscrive
 def add_new_sub(request,id):
@@ -192,9 +180,12 @@ def tagView(request,tag_slug=None):
 # Save-video-index
 def save_video(request):
     user=request.user
-    profile=Profile.objects.get(user=user)
-    videos=Video.objects.filter(title=profile.save_video)
     
+    try:
+        videos=user.profile.save_video.all()
+    except:
+        videos=None
+        
     context={
         'videos': videos,
     }
