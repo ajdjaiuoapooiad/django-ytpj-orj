@@ -9,7 +9,7 @@
 
 
 <style>
-.content a{
+a{
     color: black;
     text-decoration: none;
 }
@@ -122,12 +122,20 @@
                         </div>
                         <div class="icon-section">
                             <div class="single-icon">
-                                <a href="{% url 'com_add_like' c.id %}"><i class="material-icons material-symbols-outlined">thumb_up</i></a>
+                                <a href="{% url 'com_add_like' c.id %}">
+                                    {% if request.user in c.likes.all %}
+                                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
+                                    {% endif %}
+                                </a>
                                 <span>{{c.likes.all.count}}</span>
                             </div>
     
                             <div class="single-icon">
-                                <a href="{% url 'com_add_like' c.id %}"><i class="material-icons material-symbols-outlined">thumb_down</i></a>
+                                <a href="{% url 'com_add_like' c.id %}">
+                                    <i class="fa-regular fa-thumbs-down fa-xl"></i>
+                                </a>
                             </div>
 
                             <div class="single-icon">
