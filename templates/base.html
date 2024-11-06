@@ -117,7 +117,6 @@
 
 
 
-
             <!-- Dropdown        --------------------------->
             <div class="dropdown1">
                 <button class="dropbtn1">
@@ -130,7 +129,7 @@
                 <div class="dropdown-content1">
                     <a href="{% url 'channel-profile' request.user.channel.id %}"> <i class="material-icons">account_circle</i> &nbsp; <span>Channel</span></a>
                     <a href="{% url 'edit-channel' request.user.channel.id %}"> <i class="material-icons">settingss</i> &nbsp; <span>Setting</span></a>
-                    <a href="#"> <i class="material-icons">person_add</i> &nbsp; <span>Switch Account</span></a>
+                    <a href="{% url 'sign-out' %}"> <i class="material-icons">person_add</i> &nbsp; <span>Switch Account</span></a>
                 </div>
               </div>
 
