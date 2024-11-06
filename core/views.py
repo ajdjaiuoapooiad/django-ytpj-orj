@@ -78,6 +78,20 @@ def ajax_delete_comment(request):
     else:
         return JsonResponse({'status':2})
         
+
+def reply_save_comment(request):
+    if request.method == 'POST':
+        pk=request.POST.get('id')
+        
+        comment=request.POST.get('comment')
+        video=Video.objects.get(id=pk)
+        user=request.user
+        
+        new_comment=Comment.objects.create(comment=comment,user=user,video=video)
+        new_comment.save()
+        
+        response='Comment posted successfully!'
+        return HttpResponse(response)
     
     
 # Subscrive
