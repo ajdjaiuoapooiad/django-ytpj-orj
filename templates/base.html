@@ -30,7 +30,7 @@
         .dropdown-content1 {
           display: none;
           position: absolute;
-          background-color: #f9f9f9;
+          background-color: white;
           min-width: 160px;
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
           z-index: 1;
@@ -46,7 +46,7 @@
         }
         
         /* Change color of dropdown links on hover */
-        .dropdown-content1 a:hover {background-color: #f1f1f1}
+        .dropdown-content1 a:hover {background-color: white}
         
         /* Show the dropdown menu on hover */
         .dropdown1:hover .dropdown-content1 {
@@ -105,16 +105,41 @@
             <a href="{% url 'edit-channel' request.user.channel.id %}"><i class="material-icons display-this">notifications</i>
 </a>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Dropdown        --------------------------->
             <div class="dropdown1">
                 <button class="dropbtn1">
-                    <i id="drop-down1" class="material-icons display-this">account_circle</i>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'channel-profile' request.user.id %}"><i id="drop-down1" class="material-icons display-this">account_circle</i></a>
+                    {% else %}
+                    <a href="{% url 'sign-in' %}"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
+                    {% endif %}
                 </button>
                 <div class="dropdown-content1">
-                    <a href=""> <i class="material-symbols-outlined">edit</i> &nbsp; Edit</a>
-                    <a href=""> <i class="material-symbols-outlined">delete</i> &nbsp; Delete</a>
-                    <a href="#"> <i class="material-symbols-outlined">share</i> &nbsp; Share</a>
+                    <a href="{% url 'channel-profile' request.user.channel.id %}"> <i class="material-icons">account_circle</i> &nbsp; <span>Channel</span></a>
+                    <a href="{% url 'edit-channel' request.user.channel.id %}"> <i class="material-icons">settingss</i> &nbsp; <span>Setting</span></a>
+                    <a href="#"> <i class="material-icons">person_add</i> &nbsp; <span>Switch Account</span></a>
                 </div>
               </div>
+
+
+
+
+
+
+
 
 
         </div>
