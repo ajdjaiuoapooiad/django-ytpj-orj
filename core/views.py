@@ -11,13 +11,13 @@ from taggit.models import Tag
 from userauths.models import Profile
 
 
-def index(req):
-    videos = Video.objects.filter(visibility='public').order_by('-views')
+def index(request):
+    videos = Video.objects.filter(visibility='public').order_by('-date')
     
     context = {
         'videos': videos,
     }
-    return render(req,'index.html',context)
+    return render(request,'index.html',context)
 
 
 
@@ -175,6 +175,7 @@ def tagView(request,tag_slug=None):
     return render(request,'tags.html',context)        
 
 
+# Save-video-index
 def save_video(request):
     user=request.user
     profile=Profile.objects.get(user=user)
@@ -196,3 +197,25 @@ def like_video(request):
     }
     
     return render(request,'saved_video.html',context)
+
+
+
+
+def trend(request):
+    videos = Video.objects.filter(visibility='public').order_by('-views')
+    
+    context = {
+        'videos': videos,
+    }
+    return render(request,'index.html',context)
+
+
+
+
+
+
+
+
+
+
+
