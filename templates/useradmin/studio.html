@@ -61,7 +61,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{% url 'channel-profile' request.user.id %}"><i data-feather="user" class="me-1"></i> Channel</a>
-                            <a class="dropdown-item" href="{% url 'channel-profile' request.user.id %}"><i data-feather="settings" class="me-1"></i> Settings</a>
+                            <a class="dropdown-item" href="{% url 'edit-channel' request.user.channel.id %}"><i data-feather="settings" class="me-1"></i> Settings</a>
                             <a class="dropdown-item" href="{% url 'sign-out' %}"><i data-feather="log-out" class="me-1"></i> Logout</a>
                         </div>
                     </li>
