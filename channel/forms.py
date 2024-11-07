@@ -48,7 +48,11 @@ class ChannelEditForm(forms.ModelForm):
             'make_business_email_public',
             'business_location',
             'make_business_location_public',
-            
+            'website',
+            'instagram',
+            'facebook',
+            'twitter',
+
         ]
 
 
