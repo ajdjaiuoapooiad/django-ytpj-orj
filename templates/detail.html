@@ -88,7 +88,7 @@
 
                             <div class="icon">
                                 <a href="{% url 'add_save' video.id %}">
-                                    {% if video in request.user.profile.save_video %}
+                                    {% if video in request.user.profile.save_video.all %}
                                     <i class="fa-solid fa-heart"></i>
                                     {% else %}
                                     <i class="fa-regular fa-heart"></i>
