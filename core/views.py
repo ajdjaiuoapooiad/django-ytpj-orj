@@ -218,9 +218,14 @@ def trend(request):
 
 def subscribers(request):
     user=request.user
-    channel=Channel.objects.filter(subscribers__in=user)
+    channels=Channel.objects.filter(subscribers=user)
     
-    return render(request,'channel/subscriber.html')
+    
+    context={
+        'channels': channels,
+    }
+    
+    return render(request,'channel/subscriber.html',context)
 
 
 
