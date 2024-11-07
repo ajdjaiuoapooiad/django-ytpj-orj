@@ -23,6 +23,7 @@ class User(AbstractUser):
 class Profile(Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True)
     save_video=models.ManyToManyField(Video,related_name='save_video',blank=True)
+    history_video=models.ManyToManyField(Video,related_name='history_video',blank=True)
     
     def __str__(self):
         return self.user.username

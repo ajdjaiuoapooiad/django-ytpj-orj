@@ -37,7 +37,7 @@ urlpatterns = [
     path('trend/',views.trend,name='trend'),
     
     path('subscriber/',views.subscribers,name='subscribers'),
-
+    path('history-video/',views.history_video,name='history-video'),
     
     
 ]

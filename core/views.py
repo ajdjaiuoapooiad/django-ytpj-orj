@@ -33,6 +33,9 @@ def detail(request,pk):
     channel.total_view += 1
     channel.save()
     
+    profile=request.user.profile
+    profile.history_video.add(video)
+    
     context = {
         'video': video,
         'videos':videos,
@@ -231,7 +234,19 @@ def subscribers(request):
 
 
 
-
+def history_video(request):
+    user=request.user
+    
+    try:
+        videos=user.profile.history_video.all()
+    except:
+        videos=None
+    
+    context={
+        'videos': videos,
+    }
+    
+    return render(request,'saved_video.html',context)
 
 
 
