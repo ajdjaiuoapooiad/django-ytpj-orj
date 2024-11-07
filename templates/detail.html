@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/single.css' %}" type="text/css">
 
+
 <style>
     .fa{
         color: black;
@@ -87,7 +88,11 @@
 
                             <div class="icon">
                                 <a href="{% url 'add_save' video.id %}">
+                                    {% if video in request.user.profile.save_video %}
                                     <i class="fa-solid fa-heart"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
                                     <label for="">Save</label>
                                 </a>
                             </div>
