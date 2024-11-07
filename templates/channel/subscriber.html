@@ -1,4 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
 
-{% for c in channels %}
-{{c.channel_name}}
-{% endfor %}
+{% block style %} 
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+
+<style>
+    a{
+        color: black;
+    }
+    .message-alert{
+        background-color: rgb(169, 255, 166);
+        padding: 14px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        border: 1px solid rgb(13, 161, 0);
+    }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+
+
+        {% include 'partials/alert.html' %}
+
+        <div class="mainBody">
+            {% include 'partials/sidebar.html' %}
+
+            <div class="videos">
+                
+
+                <div class="drop-down-container">
+
+                    
+                    {% if request.path == '/' %}
+                    <h1 style="font-size: 20px;">Recommends✨</h1>
+                    {% endif %}
+
+                    {% if request.path == '/trend/' %}
+                    <h1 style="font-size: 20px;">Trending🔥</h1>
+                    {% endif %}
+
+
+                    
+
+
+
+                </div>
+
+                <div class="video-container">
+                    {% for c in channels %}
+                   
+                    {{c.channel_name}}
+                    {{c.user}} <br>
+                     
+                   
+                   
+                    {% endfor %}
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+   
+{% endblock content %}
