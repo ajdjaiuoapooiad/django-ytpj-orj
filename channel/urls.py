@@ -32,5 +32,6 @@ urlpatterns = [
     path('channel/delete-video/<video_id>/',views.video_delete,name='video-delete'),
     
     
-    path('edit-channel/<channel_id>/',views.edit_channel,name='edit-channel')
+    path('edit-channel/<channel_id>/',views.edit_channel,name='edit-channel'),
+    
 ]

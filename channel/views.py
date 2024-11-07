@@ -304,4 +304,3 @@ def edit_channel(request,channel_id):
     return render(request,'channel/channe_edit.html',context)
 
 
-

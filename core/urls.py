@@ -36,5 +36,8 @@ urlpatterns = [
     
     path('trend/',views.trend,name='trend'),
     
+    path('subscriber/',views.subscribers,name='subscribers'),
+
+    
     
 ]

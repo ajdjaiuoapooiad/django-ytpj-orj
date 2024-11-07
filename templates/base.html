@@ -114,7 +114,7 @@
               <div class="dropdown-content1">
                   <a href="{% url 'video-upload' %}"> <i class="material-icons">videocam</i> &nbsp; <span>Video</span></a>
                   <a href="{% url 'create-post' request.user.channel.id  %}"> <i class="material-icons">forum</i> &nbsp; <span>Community</span></a>
-                  <a href=""> <i class="material-icons">subscriptions</i> &nbsp; <span>Subscrivers</span></a>
+                  <a href="{% url 'subscribers' %}"> <i class="material-icons">subscriptions</i> &nbsp; <span>Subscribers</span></a>
               </div>
             </div>
 
