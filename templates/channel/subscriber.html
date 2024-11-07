@@ -6,6 +6,13 @@
 
 
 <style>
+    .user-icon {
+        object-fit: cover;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+    }
     a{
         color: black;
     }
@@ -52,17 +59,13 @@
 
                 </div>
 
-                <div class="video-container">
+                <div class="">
+                    <h4>Subscribers</h4>
                     {% for c in channels %}
                    
-                    {{c.channel_name}}
-                    {{c.user}} <br>
-                     
-                   
+                    <img  class='user-icon' src="{{c.image.url}}" alt="">
                    
                     {% endfor %}
-                    
-
                 </div>
 
             </div>
