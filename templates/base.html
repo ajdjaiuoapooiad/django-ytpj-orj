@@ -106,14 +106,14 @@
             <div class="dropdown1">
               <button class="dropbtn1">
                   {% if request.user.is_authenticated %}
-                  <a href=""><i id="drop-down1" class="material-icons">add</i></a>
+                  <a href="{% url 'create-post' request.user.channel.id  %}"><i id="drop-down1" class="material-icons">add</i></a>
                   {% else %}
                   <a href="{% url 'sign-in' %}"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
                   {% endif %}
               </button>
               <div class="dropdown-content1">
-                  <a href=""> <i class="material-icons">videocam</i> &nbsp; <span>Video</span></a>
-                  <a href=""> <i class="material-icons">forum</i> &nbsp; <span>Community</span></a>
+                  <a href="{% url 'video-upload' %}"> <i class="material-icons">videocam</i> &nbsp; <span>Video</span></a>
+                  <a href="{% url 'create-post' request.user.channel.id  %}"> <i class="material-icons">forum</i> &nbsp; <span>Community</span></a>
                   <a href=""> <i class="material-icons">subscriptions</i> &nbsp; <span>Subscrivers</span></a>
               </div>
             </div>
@@ -146,8 +146,8 @@
                 </button>
                 <div class="dropdown-content1">
                     <a href="{% url 'channel-profile' request.user.channel.id %}"> <i class="material-icons">account_circle</i> &nbsp; <span>Channel</span></a>
-                    <a href="{% url 'edit-channel' request.user.channel.id %}"> <i class="material-icons">equalizer</i> &nbsp; <span>Studio</span></a>
-                    <a href="{% url 'studio' %}"> <i class="material-icons">settings</i> &nbsp; <span>Setting</span></a>
+                    <a href="{% url 'studio' %}"> <i class="material-icons">equalizer</i> &nbsp; <span>Studio</span></a>
+                    <a href="{% url 'edit-channel' request.user.channel.id %}"> <i class="material-icons">settings</i> &nbsp; <span>Setting</span></a>
                     <a href="{% url 'sign-out' %}"> <i class="material-icons">person_add</i> &nbsp; <span>Switch Account</span></a>
                 </div>
               </div>
