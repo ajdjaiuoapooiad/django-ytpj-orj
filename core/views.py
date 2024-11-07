@@ -238,7 +238,7 @@ def history_video(request):
     user=request.user
     
     try:
-        videos=user.profile.history_video.all()
+        videos=user.profile.history_video.all().order_by('-date')
     except:
         videos=None
     

@@ -38,42 +38,18 @@
 
                     
                     {% if request.path == '/like-video/' %}
-                    <h1 style="font-size: 20px;">Liked videos👍</h1>
+                    <h1 style="font-size: 20px;">Hey "{{request.user}}" : Liked videos👍</h1>
                     {% endif %}
 
                     {% if request.path == '/save-video/' %}
-                    <h1 style="font-size: 20px;">Saved videos📚</h1>
+                    <h1 style="font-size: 20px;">Hey "{{request.user}}" : Saved videos📚</h1>
                     {% endif %}
 
                     {% if request.path == '/history-video/' %}
-                    <h1 style="font-size: 20px;">History videos📚</h1>
+                    <h1 style="font-size: 20px;">Hey "{{request.user}}" : History videos📚</h1>
                     {% endif %}
 
 
-
-                    <!-- dropdown-content           ------------------------>
-                    <div class="dropdown-content-background">
-                        <div class="dropdown-contents">
-                            <div class="dropdown-content">
-                                <a href="{% url 'channel-profile' request.user.channel.id %}">
-                                    <i class="material-icons">account_circle</i>
-                                </a>
-                                <a href="{% url 'channel-profile' request.user.channel.id %}"><span>Channel</span></a>
-                            </div>
-
-                            <div class="dropdown-content">
-                                <i class="material-icons">settingss</i>
-                                <span>Setting</span>
-                            </div>
-
-                            <div class="dropdown-content">
-                                <i class="material-icons">person_add</i>
-                                <span>Switch Account</span>
-                            </div>
-
-                            
-                        </div>
-                    </div>
 
 
 
