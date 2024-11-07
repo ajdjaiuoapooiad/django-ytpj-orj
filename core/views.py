@@ -7,10 +7,14 @@ from core.models import Comment, Video
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from taggit.models import Tag
+from django.contrib.auth.decorators import login_required
 
 from userauths.models import Profile
 
 
+
+
+@login_required
 def index(request):
     videos = Video.objects.filter(visibility='public').order_by('-date')
     
@@ -44,11 +48,7 @@ def detail(request,pk):
     }
     return render(request,'detail.html',context)
 
-def create(request):
-    return render(request,'create.html')
 
-def update(request):
-    return render(request,'update.html')
 
 
 

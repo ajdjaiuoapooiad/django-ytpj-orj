@@ -1,3 +1,4 @@
+from email import message
 from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib import messages
@@ -15,19 +16,21 @@ def registerView(request):
     if request.method=='POST':
         form=UserRegisterForm(request.POST or None)
         
-        if form.is_valid():
-            new_user=form.save()
-            username=form.cleaned_data.get('username')
-            messages.success(request,f'Hey {username}, Account Created')
-            new_user=authenticate(
-                username=form.cleaned_data['email'],
-                password=form.cleaned_data['password1'],
-                )
-            login(request,new_user)
-            return redirect('index')
+        try:
+            if form.is_valid():
+                new_user=form.save()
+                username=form.cleaned_data.get('username')
+                messages.success(request,f'Hey {username}, Account Created')
+                new_user=authenticate(
+                    username=form.cleaned_data['email'],
+                    password=form.cleaned_data['password1'],
+                    )
+                login(request,new_user)
+                return redirect('index')
+        except:
+            messages.error(request,f'An error has occurred')
     else:
         form=UserRegisterForm()
-        messages.warning(request,'失敗しました')
         
     context={
         'form':form,
