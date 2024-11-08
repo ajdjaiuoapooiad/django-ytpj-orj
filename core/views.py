@@ -1,4 +1,3 @@
-from re import I
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
@@ -24,7 +23,7 @@ def index(request):
     return render(request,'index.html',context)
 
 
-
+@login_required
 def detail(request,pk):
     video = Video.objects.get(id=pk)
     videos = Video.objects.filter(visibility='public').order_by('-views')
@@ -54,6 +53,7 @@ def detail(request,pk):
 
 
 # Ajax
+@login_required
 def ajax_save_comment(request):
     if request.method == 'POST':
         pk=request.POST.get('id')
@@ -86,6 +86,7 @@ def ajax_delete_comment(request):
  
     
 # Subscrive
+@login_required
 def add_new_sub(request,id):
     subscribers=Channel.objects.get(id=id)
     user=request.user
@@ -99,7 +100,8 @@ def add_new_sub(request,id):
         response = 'Unsubscribe'
         return JsonResponse(response,safe=False,status=200)
     
-    
+
+@login_required
 def load_sub(request,id):
     subscribers=Channel.objects.get(id=id)
     sub_lists=list(subscribers.subscribers.values())
@@ -108,6 +110,7 @@ def load_sub(request,id):
     
     
 # Likes
+@login_required
 def add_new_like(request,id):
     video=Video.objects.get(id=id)
     user=request.user
@@ -123,6 +126,7 @@ def add_new_like(request,id):
 
 
 
+@login_required
 def load_like(request,id):
     video=Video.objects.get(id=id)
     like_lists=list(video.likes.values())
@@ -130,6 +134,7 @@ def load_like(request,id):
  
 
 # Save-video
+@login_required
 def add_new_save(request,video_id):
     video=Video.objects.get(id=video_id)
     user=request.user.profile
@@ -143,6 +148,7 @@ def add_new_save(request,video_id):
 
 
 # Search
+@login_required
 def searchView(request):
     video=Video.objects.filter(visibility='public').order_by('-views')
     query=request.GET.get('q')
@@ -162,7 +168,7 @@ def searchView(request):
 
   
   
-  
+@login_required
 def tagView(request,tag_slug=None):
     video=Video.objects.filter(visibility='public').order_by('-views')
     tag=None
@@ -181,6 +187,7 @@ def tagView(request,tag_slug=None):
 
 
 # Save-video-index
+@login_required
 def save_video(request):
     user=request.user
     
