@@ -2,6 +2,8 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.conf import settings
 from django.db.models.signals import post_save
+from core.models import user_derectory_path #channelModelのため　これも必要
+
 
 
 User=settings.AUTH_USER_MODEL
@@ -16,14 +18,13 @@ STATUS = (
 )
 
 
-def user_directory_path(instance, filename):
-    return "user_{0}/{1}".format(instance.channel.user.id, filename)
+
 
 
 
 class Channel(models.Model):
-    channel_art=models.ImageField(upload_to=user_directory_path,default='images/channel-art.jpg')
-    image=models.ImageField(upload_to=user_directory_path,default='images/user-image.png')
+    channel_art=models.ImageField(upload_to=user_derectory_path,default='images/channel-art.jpg')
+    image=models.ImageField(upload_to=user_derectory_path,default='images/user-image.png')
     full_name=models.CharField(max_length=100)
     channel_name=models.CharField(max_length=100)
     description=models.TextField(null=True,blank=True)
@@ -66,6 +67,12 @@ post_save.connect(create_user_channel, sender=User)
 post_save.connect(save_user_channel, sender=User)
     
 
+
+
+
+
+def user_directory_path(instance, filename):    #CommunityModelのため
+    return "user_{0}/{1}".format(instance.channel.user.id, filename)
 
     
     
