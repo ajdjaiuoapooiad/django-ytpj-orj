@@ -130,7 +130,7 @@ display: block;
                             
                         </div>
                         <div class="content">
-                            <h3>{{ community.content }}</h3>
+                            <h3>{{ community.content|linebreaksbr }}</h3>
                             {% if community.image %}
                             <img src="{{community.image.url}}" alt="">
                             {% endif %}
