@@ -27,7 +27,7 @@ class Video(models.Model):
     video=models.FileField(upload_to=user_derectory_path)
     image=models.ImageField(upload_to=user_derectory_path,null=True,blank=True)
     title=models.CharField(max_length=100)
-    description=models.TextField(max_length=2000,null=True,blank=True)
+    description=models.TextField(max_length=4000,null=True,blank=True)
     tags=TaggableManager(blank=True)
     date=models.DateTimeField(auto_now_add=True)
     visibility=models.CharField(choices=VISIBILITY,max_length=100,default='public')
