@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from taggit.models import Tag
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 from userauths.models import Profile
 
 
@@ -16,9 +16,12 @@ from userauths.models import Profile
 @login_required
 def index(request):
     videos = Video.objects.filter(visibility='public').order_by('-date')
+    paginator=Paginator(videos,9)
+    page=request.GET.get('page')
+    paged_videos=paginator.get_page(page)
     
     context = {
-        'videos': videos,
+        'videos': paged_videos,
     }
     return render(request,'index.html',context)
 

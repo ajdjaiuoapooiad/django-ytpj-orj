@@ -93,6 +93,47 @@
 
                     {% endfor %}
                     
+                    <div class="pagination-box p-box-2 text-center">
+                        <nav aria-label="Page navigation example">
+                           {% if videos.has_other_pages %}
+                            <ul class="pagination">
+                                {% if videos.has_previous %}
+                                <li class="page-item">
+                                    <a href="?page={{videos.previous_page_number}}" class="page-link">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <a href="" class="page-link"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% endif %}
+
+                                {% for i in videos.paginator.page_range %}
+                                {% if videos.number == i %}
+                                    <li class="page-item">
+                                        <a href="" class="page-link active">{{i}}</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a href="?page={{i}}" class="page-link active">{{i}}</a>
+                                    </li>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% if videos.has_next %}
+                                    <li class="page-item">
+                                        <a href="?page={{videos.next_page_number}}" class="page-link"><i class="fa fa fa-angle-right"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a href="" class="pagelink"><i class="fa fa-angle-right"></i></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                           {% endif %}
+                        </nav>
+                    </div>
 
                 </div>
 
