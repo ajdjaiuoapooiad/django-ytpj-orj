@@ -93,6 +93,12 @@
 
                     {% endfor %}
                     
+
+
+
+
+
+                    <!-- Pagination          ------------------------------->
                     <div class="pagination-box p-box-2 text-center">
                         <nav aria-label="Page navigation example">
                            {% if videos.has_other_pages %}
@@ -116,7 +122,7 @@
                                     </li>
                                 {% else %}
                                     <li class="page-item">
-                                        <a href="?page={{i}}" class="page-link active">{{i}}</a>
+                                        <a href="?page={{i}}" class="page-link">{{i}}</a>
                                     </li>
                                 {% endif %}
                                 {% endfor %}
@@ -127,7 +133,7 @@
                                     </li>
                                 {% else %}
                                     <li class="page-item">
-                                        <a href="" class="pagelink"><i class="fa fa-angle-right"></i></a>
+                                        <a href="" class="page-link"><i class="fa fa-angle-right"></i></a>
                                     </li>
                                 {% endif %}
                             </ul>
