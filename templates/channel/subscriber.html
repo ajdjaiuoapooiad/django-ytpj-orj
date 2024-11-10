@@ -41,30 +41,13 @@
             <div class="videos">
                 
 
-                <div class="drop-down-container">
-
-                    
-                    {% if request.path == '/' %}
-                    <h1 style="font-size: 20px;">Recommends✨</h1>
-                    {% endif %}
-
-                    {% if request.path == '/trend/' %}
-                    <h1 style="font-size: 20px;">Trending🔥</h1>
-                    {% endif %}
-
-
-                    
-
-
-
-                </div>
-
                 <div class="">
                     <h4>Subscribers</h4>
                     {% for c in channels %}
-                   
+                    
                     <img  class='user-icon' src="{{c.image.url}}" alt="">
-                   
+
+
                     {% endfor %}
                 </div>
 
