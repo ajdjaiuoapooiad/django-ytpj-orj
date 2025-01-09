@@ -1,0 +1,489 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %} 
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/single.css' %}" type="text/css">
+
+
+<style>
+    .fa{
+        color: black;
+    }
+    a { 
+        color: black; 
+        text-decoration:none; 
+    }
+    .unsubscribe-btn{
+        background-color: gray;
+        color: #fff;
+    }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+
+
+
+    <main class="single-pages">
+
+        <section class="video-items flex">
+
+            <div class="left">
+                <div class="left-content">
+                    <video controls>
+                        <source src="{{video.video.url}}" type="video/mp4" poster="images/1.jpg">
+                    </video>
+
+                    <div class="tag">
+                        <label for="" class="tags">
+                            
+                            {% for tag in video.tags.all %}
+                            <a id="channel-tag" href="{% url 'video-tag' tag.slug %}">
+                                <label for="" class="tags-bg">#{{tag.name}}　</label>
+                            </a>
+                            {% endfor %}
+
+                        </label>
+
+                        <p>{{video.title}}</p>
+                    </div>
+
+                    <div class="view flex2 border-bottom">
+                        <div class="view-text">
+                            <span>{{video.views}} View</span>
+                        </div>
+
+                        <div class="flex">
+                            <div class="icon">
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()">
+                                    {% if request.user in video.likes.all %}
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    {% endif %}
+                                </button>
+                                <label for=""><span id="like-count">{{video.likes.all.count}}</span></label>
+                            </div>
+
+                            <div class="icon">
+                                <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa-regular fa-thumbs-down"></i></button>
+                                <label for=""><span id="like-count"></span></label>
+                                
+                            </div>
+
+                            <div class="icon">
+                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                <label for="">Share</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""><i class="fa fa-scissors"></i></a>
+                                <label for="">Clips</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href="{% url 'add_save' video.id %}">
+                                    {% if video in request.user.profile.save_video.all %}
+                                    <i class="fa-solid fa-heart"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                    <label for="">Save</label>
+                                </a>
+                            </div>
+
+                            {% if video.user == request.user %}
+                            <div class="icon">
+                                <a href="{% url 'video-edit' video.user.channel.id video.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <label for="">Edit</label>
+                            </div>
+                            {% endif %}
+
+                            <div class="icon">
+                                <a href=""><i class="fa fa-ellipsis"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Channel        --------------------------->
+
+                    <div class="details flex border-bottom">
+                        <div class="img">
+                            <img 
+                                src="{{video.user.channel.image.url}}" 
+                                alt=""
+                            >
+                        </div>
+                        
+                        <div class="heading">
+                            <h4>
+                                <a href="{% url 'channel-profile' video.user.channel.id %}">{{video.user.channel.channel_name}}</a>
+                                {% if video.user.channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %}     
+                            </h4>
+                            <span id="count">{{video.user.channel.subscribers.all.count}}</span> <span>Subscribers</span>
+                            <h5>{{video.description|linebreaksbr }}</h5>
+                            <span> <i class="fa fa-caret-down"></i> show more</span>
+                        </div>
+
+                        <div>
+                            <button  id="sub_btn" onclick="addsub()" class="subscribe-btn">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+
+
+                <!-- Comment        ------------------------------------>
+
+
+
+                    <hr class="mid-hr">
+
+                    <div class="comment">
+                        <div class="comment-heading flex">
+                            <h4><b>{{comment.count}} Comments</b></h4>
+                            <h4><i class="fas fa-list-ul"></i> <label>Sort By</label> </h4>
+                        </div>
+                    </div>
+
+
+
+                    <div class="details comment-self flex">
+                        <div class="img">
+                            <img src="{{request.user.channel.image.url}}" alt="">
+                        </div>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- comment form               ------------------------------------->
+
+                        {% if request.user.is_authenticated %}
+                        <form action="" style="width: 100%;" id="comment_form">
+
+                            {% csrf_token %}
+                            <div class="heading flex">
+                                <input type="hidden" value="{{ video.id }}" id="id" name="id">
+                                <input type="text" placeholder="Add a comment..." id="comment" name="comment">
+                                <button ><i class="material-icons">send</i></button>
+                            </div>
+                        </form>
+                        {% else %}
+                            <a href="../../admin/login" style="margin-top: 10px;">*Login To Comment</a>
+                        {% endif %}
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                <!-- Comment form -->
+
+                    <div id="comment-wrapper">
+
+                        {% for c in comments %}
+                        <div class="comment-tray">
+
+                            <div class="details-Comment">
+                                <div class="details flex">
+        
+                                    <div class="img">
+                                        <img  src="{{request.user.channel.image.url}}"  alt="">
+                                    </div>
+                                    <div class="heading">
+                                        <h4><b>{{c.user.username|title}} </b> &nbsp; •<span>{{c.date|timesince}} ago</span></h4>
+                                        <p>{{c.comment}}</p>         
+            
+                                        <div class="comment-like flex">
+                                            <div class="icon">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                <label for=""><small></small></label>
+                                            </div>
+            
+                                            <div class="icon">
+                                                <i class="fa fa-thumbs-down"></i>
+                                                <label for=""><small></small></label>
+                                            </div>
+            
+                                            <div class="icon">
+                                                <label for=""><a><small>Reply</small></a></label>
+                                            </div>
+
+                                            <div class="icon">
+                                                <input type="hidden" value="{{ c.id }}" name="" id="">
+                                                <label for=""><button data-cid={{c.id}} class="btn-del" style="color: red;"><small>Delete</small></button></label>
+                                            </div>
+            
+                                        </div>
+                                    </div>
+        
+        
+                                </div>
+                            </div>
+
+                            <!-- Comment Reply -->
+                            <!-- <div class="replay">
+                                <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Reply</label>
+                                <div class="replay-details flex">
+                                    <div class="img">
+                                        <img  src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"  alt="">
+                                    </div>
+                                    <div class="text">
+                                        <h4><label for="">Desphixs</label><i class="fas fa-check-circle"></i><span>16 Months ago</span> </h4>
+                                        <p>Thank you</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <hr>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Right Content -->
+
+            <div class="right">
+                <div class="right-content">
+                    <button class="chat">Show Chat Reply</button>
+                    <div class="tags">
+                        <label for="" class="tags-bg">All</label>
+                        <label for="" class="tags-bg">Web Design</label>
+                        <label for="" class="tags-bg">Frontend</label>
+                        <label for="" class="tags-bg">HTML</label>
+                    </div>
+
+                    {% for v in videos %}
+                    <div class="video-items video-sidebar flex">
+                            
+                        <a href="{% url 'video-detail' v.id  %}">
+                            <img src="{{v.image.url}}" alt="">
+                        </a>
+                        
+                        <div class="details">
+                            <a href="{% url 'video-detail' v.id  %}"><p>{{v.title}}</p></a>
+                            <span>{{v.user.channel.channel_name}} {% if v.user.channel.verified == True %} <i class="fa fa-check-circle"></i> {% endif %} </span><br>
+                            <span><small>{{v.views}} Views . {{v.date|timesince}} ago</small> </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Ajax  Comment      -------------------------------------->
+
+<script type="text/javascript">
+    $(document).on('submit','#comment_form',function(e){
+        e.preventDefault()
+        let _comment=$('#comment').val()
+        console.log(_comment);
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'save-comment' %}",
+            data: {
+                id: $('#id').val(),   //commentに対するid
+                comment: _comment,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(){
+                console.log('Comment passed to backend');
+
+                let _html='<div class="details-Comment">\
+                                <div class="details flex">\
+                                    <div class="img">\
+                                        <img  src="{{request.user.channel.image.url}}" alt="">\
+                                    </div>\
+                                    <div class="heading">\
+                                        <h4><b>{{request.user.username|title}} </b> &nbsp; •<span>{% now "H:i" %} </span></h4>\
+                                        <p> '+ _comment +' </p>\
+                                        <div class="comment-like flex">\
+                                            <div class="icon">\
+                                                <i class="fa fa-thumbs-up"></i>\
+                                                <label for=""><small></small></label>\
+                                            </div>\
+                                            <div class="icon">\
+                                                <i class="fa fa-thumbs-down"></i>\
+                                                <label for=""><small></small></label>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <hr>\
+                            '
+
+
+                            $('#comment-wrapper').prepend(_html);
+                            $('#comment').val('');
+            },
+            error: function(error){
+                console.log(error);
+                
+            }
+
+        })
+        
+    })
+
+
+
+    // Delete-Comment
+    $('#comment-wrapper').on('click','.btn-del',function(){
+        console.log('Delete comment button is clicked');
+        let id = $(this).attr('data-cid')
+        
+        mydata = {
+            cid: id
+        }
+        mythis = $(this)
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'delete-comment' %}",
+            data: mydata,
+
+            success: function(data){
+                if(data.status === 1){
+                    $(mythis).closest('.comment-tray').fadeOut();
+                }
+                if(data.status === 0){
+                    alert('Unabled to delete comment, try again later ...')
+                }
+            }
+        })
+
+    })
+
+
+
+</script>
+
+
+
+<!-- Subscribe           -------------------------->
+<script>
+    let subcounter = document.getElementById('count')
+    sub_button = document.getElementById('sub_btn')
+    subscriber_added = []
+
+    function addsub(){
+        axios
+        .get("{% url 'add_sub' video.user.id %}")
+        .then(response =>{
+            this.response = response.data;
+            sub_button.innerHTML = this.response;
+            loadsub()
+            sub_button.classList.toggle('unsubscribe-btn')
+        })
+    }
+
+    function loadsub(){
+        axios
+        .get("{% url 'load_sub' channel.pk %}")
+        .then(response =>{
+            this.response = response.data;
+            subscriber_added = this.response;
+            subcounter.innerHTML = subscriber_added.length
+        })
+    }
+
+    window.onload=loadsub;
+
+</script>
+
+
+
+
+
+
+<!-- Likes           -------------------------->
+<script>
+    let likescounter = document.getElementById('like-count')
+    likes_button = document.getElementById('like_button')
+    likes_added = []
+
+    function addlike(){
+        axios
+        .get("{% url 'add_like' video.id %}")
+        .then(response =>{
+            this.response = response.data;
+            likes_button.innerHTML = this.response;
+            loadlike()
+            
+        })
+    }
+
+    function loadlike(){
+        axios
+        .get("{% url 'load_like' video.id %}")
+        .then(response =>{
+            this.response = response.data;
+            likes_added = this.response;
+            likescounter.innerHTML = likes_added.length
+        })
+    }
+
+    window.onload=loadlike();
+
+</script>
+
+
+
+{% endblock content %}
+
+
+
+

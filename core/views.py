@@ -23,7 +23,7 @@ def index(request):
     context = {
         'videos': paged_videos,
     }
-    return render(request,'index.html',context)
+    return render(request,'core/index.html',context)
 
 
 @login_required
@@ -48,7 +48,7 @@ def detail(request,pk):
         'comments': comments,
         'channel': channel,
     }
-    return render(request,'detail.html',context)
+    return render(request,'core/detail.html',context)
 
 
 
@@ -167,7 +167,7 @@ def searchView(request):
         'query': query,
     }
     
-    return render(request,'search.html',context)
+    return render(request,'core/search.html',context)
 
   
   
@@ -186,7 +186,7 @@ def tagView(request,tag_slug=None):
         'videos': videos,
     }
     
-    return render(request,'tags.html',context)        
+    return render(request,'core/tags.html',context)        
 
 
 # Save-video-index
@@ -203,7 +203,7 @@ def save_video(request):
         'videos': videos,
     }
     
-    return render(request,'saved_video.html',context)
+    return render(request,'core/saved_video.html',context)
 
 
 def like_video(request):
@@ -214,7 +214,7 @@ def like_video(request):
         'videos': videos,
     }
     
-    return render(request,'saved_video.html',context)
+    return render(request,'core/saved_video.html',context)
 
 
 
@@ -225,7 +225,7 @@ def trend(request):
     context = {
         'videos': videos,
     }
-    return render(request,'index.html',context)
+    return render(request,'core/index.html',context)
 
 
 
@@ -256,7 +256,7 @@ def history_video(request):
         'videos': videos,
     }
     
-    return render(request,'saved_video.html',context)
+    return render(request,'core/saved_video.html',context)
 
 
 
