@@ -34,12 +34,12 @@
         <section class="video-items flex">
 
             <div class="left">
-                <div class="left-content">
+                <div class="left-content my-3">
                     <video controls>
                         <source src="{{video.video.url}}" type="video/mp4" poster="images/1.jpg">
                     </video>
 
-                    <div class="tag">
+                    <div class="tag my-3">
                         <label for="" class="tags">
                             
                             {% for tag in video.tags.all %}
@@ -50,12 +50,12 @@
 
                         </label>
 
-                        <p>{{video.title}}</p>
+                        <strong>{{video.title}}</strong>
                     </div>
 
-                    <div class="view flex2 border-bottom">
+                    <div class="view flex2 border-bottom my-3">
                         <div class="view-text">
-                            <span>{{video.views}} View</span>
+                            <strong>{{video.views}} View</strong>
                         </div>
 
                         <div class="flex">
@@ -112,7 +112,7 @@
 
                 <!-- Channel        --------------------------->
 
-                    <div class="details flex border-bottom">
+                    <div class="details flex border-bottom my-3">
                         <div class="img">
                             <img 
                                 src="{{video.user.channel.image.url}}" 
@@ -121,13 +121,13 @@
                         </div>
                         
                         <div class="heading">
-                            <h4>
-                                <a href="{% url 'channel-profile' video.user.channel.id %}">{{video.user.channel.channel_name}}</a>
-                                {% if video.user.channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %}     
-                            </h4>
-                            <span id="count">{{video.user.channel.subscribers.all.count}}</span> <span>Subscribers</span>
-                            <h5>{{video.description|linebreaksbr }}</h5>
-                            <span> <i class="fa fa-caret-down"></i> show more</span>
+                            <div class="">
+                                <h4>
+                                    <a href="{% url 'channel-profile' video.user.channel.id %}">{{video.user.channel.channel_name}}</a>
+                                    {% if video.user.channel.verified == True %} <i class="fas fa-check-circle"></i> {% endif %}     
+                                </h4>
+                                <span id="count">{{video.user.channel.subscribers.all.count}}</span> <span>Subscribers</span>
+                            </div>
                         </div>
 
                         <div>
@@ -136,6 +136,11 @@
                             </button>
                         </div>
                     </div>
+                    <div class="border-bottom my-5">
+                        <h5>{{video.description|linebreaksbr }}</h5>
+                        <span> <i class="fa fa-caret-down"></i> show more</span>
+                    </div>
+
                     <hr>
 
 
@@ -278,7 +283,7 @@
             <!-- Right Content -->
 
             <div class="right">
-                <div class="right-content">
+                <div class="right-content my-3">
                     <button class="chat">Show Chat Reply</button>
                     <div class="tags">
                         <label for="" class="tags-bg">All</label>
@@ -288,7 +293,7 @@
                     </div>
 
                     {% for v in videos %}
-                    <div class="video-items video-sidebar flex">
+                    <div class="video-items video-sidebar flex ">
                             
                         <a href="{% url 'video-detail' v.id  %}">
                             <img src="{{v.image.url}}" alt="">
